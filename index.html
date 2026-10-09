@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>西班牙行程 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Chiron+GoRound+TC:wght@400;500&family=DM+Sans:wght@400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap">
+<style>
+/* Layout: the whole trip as one ticket strip (city bands over 7 days + packing), sticky on top.
+   Below it, each day opens with a big date numeral, then timeline | sticky route map + notes. Phones stack map, timeline, notes. */
+:root{
+  --bg:#F5F6F9; --paper:#FFFFFF; --ink:#131933; --ink-2:#4B5272; --ink-3:#8A90A8; --line:#E2E5EE; --line-2:#CDD2E0;
+  --cobalt:#2443B5; --cobalt-soft:#E7ECFB;
+  --saffron:#F2A900; --saffron-ink:#8F5D00; --saffron-soft:#FFF2CC;
+  --bcn:#167A8B; --bcn-soft:#DDF0F2; --mad:#A8253A; --mad-soft:#F7E1E4; --go:#6A7089; --go-soft:#ECEDF2;
+  --paprika:#B3441E; --paprika-soft:#FBE7DE; --red:#C3322A; --red-soft:#FBE3E1; --green:#2A7A4B; --green-soft:#E0F1E6;
+  --map-bg:#EEF1F7; --map-grid:#D9DEEA; --on-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,25,51,.05),0 8px 24px -12px rgba(19,25,51,.18);
+  /* one font + weight per place on the page (tune them in the font lab) */
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-round:"Chiron GoRound TC","Noto Sans TC","PingFang TC",sans-serif;
+  --f-num:"DM Sans","Noto Sans TC",system-ui,sans-serif;
+  --f-h1:var(--f-body); --w-h1:700;
+  --f-es:var(--f-num); --w-es:400;
+  --f-strip:var(--f-num); --w-strip:400;
+  --f-dnum:var(--f-num); --w-dnum:400;
+  --f-h2:var(--f-round); --w-h2:400;
+  --f-h3:var(--f-body); --w-h3:500;
+  --f-h4:var(--f-body); --w-h4:500;
+  --f-time:"Noto Serif TC","Songti TC",serif; --w-time:400;
+  --f-chip:var(--f-round); --w-chip:500;
+  --strip-h:92px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C0F1D; --paper:#141932; --ink:#E9ECF7; --ink-2:#A6ACC6; --ink-3:#6D7393; --line:#232A47; --line-2:#323A5C;
+  --cobalt:#93A7FF; --cobalt-soft:#1C2450;
+  --saffron:#FFC23D; --saffron-ink:#FFC23D; --saffron-soft:#352A0C;
+  --bcn:#5CC6D6; --bcn-soft:#12303A; --mad:#FF8597; --mad-soft:#3A1720; --go:#9AA0BA; --go-soft:#1E2340;
+  --paprika:#FF9A72; --paprika-soft:#3A1E14; --red:#FF8478; --red-soft:#3D1918; --green:#71D69C; --green-soft:#12301F;
+  --map-bg:#10142A; --map-grid:#1F2644; --on-ink:#0C0F1D;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C0F1D; --paper:#141932; --ink:#E9ECF7; --ink-2:#A6ACC6; --ink-3:#6D7393; --line:#232A47; --line-2:#323A5C;
+  --cobalt:#93A7FF; --cobalt-soft:#1C2450;
+  --saffron:#FFC23D; --saffron-ink:#FFC23D; --saffron-soft:#352A0C;
+  --bcn:#5CC6D6; --bcn-soft:#12303A; --mad:#FF8597; --mad-soft:#3A1720; --go:#9AA0BA; --go-soft:#1E2340;
+  --paprika:#FF9A72; --paprika-soft:#3A1E14; --red:#FF8478; --red-soft:#3D1918; --green:#71D69C; --green-soft:#12301F;
+  --map-bg:#10142A; --map-grid:#1F2644; --on-ink:#0C0F1D;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--strip-h) + 16px)}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:28px 0}
+.wrap-main{padding-block:0 72px}
+@media (min-width:720px){.wrap{padding-inline:32px}}
+a{color:var(--cobalt);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px;border-radius:6px}
+.c-bcn{--city:var(--bcn);--city-soft:var(--bcn-soft)}
+.c-mad{--city:var(--mad);--city-soft:var(--mad-soft)}
+.c-go{--city:var(--go);--city-soft:var(--go-soft)}
+.c-pack{--city:var(--saffron);--city-soft:var(--saffron-soft)}
+
+/* hero */
+.hero{padding-bottom:22px}
+.hero h1{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 18px;line-height:1}
+.hero h1 .zh{font-family:var(--f-h1);font-weight:var(--w-h1);font-size:clamp(56px,11vw,112px)}
+.hero h1 .es{font-family:var(--f-es);font-weight:var(--w-es);font-size:clamp(22px,3.6vw,36px);color:var(--ink-2)}
+.hero h1 .es i{font-style:normal;color:var(--bcn)} .hero h1 .es b{font-weight:400;color:var(--mad)}
+
+/* ticket strip */
+.strip-shell{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:10px;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.strip-shell.stuck{border-bottom-color:var(--line)}
+.strip{max-width:1180px;margin:0 auto;padding-inline:16px;display:grid;grid-template-columns:repeat(7,minmax(74px,1fr)) minmax(84px,1.1fr);grid-template-rows:auto auto;column-gap:6px;row-gap:5px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding-inline:16px}
+.strip::-webkit-scrollbar{display:none}
+@media (min-width:720px){.strip{padding-inline:32px}}
+
+.seg{grid-row:1;font-size:12px;font-weight:500;color:var(--city);display:flex;align-items:center;gap:6px;white-space:nowrap;min-width:0}
+.seg::after{content:"";flex:1;height:1px;background:currentColor;opacity:.35}
+.day{grid-row:2;scroll-snap-align:start;position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:8px;padding:8px 10px 8px 10px;border:1px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer;text-align:left;overflow:hidden;transition:transform .15s ease,border-color .15s,box-shadow .15s}
+.day::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--city)}
+.day:hover{border-color:var(--line-2);transform:translateY(-1px)}
+.day .n{font-family:var(--f-strip);font-weight:var(--w-strip);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.day .m{display:grid;line-height:1.25;min-width:0}
+.day .wd{font-size:12px;color:var(--ink-2)}
+.day .ct{font-size:12px;font-weight:700;color:var(--city);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-ink);box-shadow:var(--shadow)}
+.day[aria-selected="true"] .wd{color:inherit;opacity:.75}
+.day[aria-selected="true"] .ct{color:var(--city)}
+.day .today{position:absolute;top:9px;right:8px;font-size:10.5px;font-weight:700;line-height:1;padding:3px 5px;border-radius:5px;background:var(--saffron);color:#1A1200}
+.day.past:not([aria-selected="true"]) .n{color:var(--ink-3)}
+.day.c-pack .n{font-family:var(--f-h4);font-weight:var(--w-h4);font-size:22px}
+@media (max-width:600px){
+  .strip{grid-template-columns:repeat(7,minmax(0,1fr)) minmax(0,1.25fr);column-gap:4px;padding-inline:12px;overflow:visible}
+  .seg{font-size:11px;gap:4px}
+  .day{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding:9px 2px 6px;border-radius:10px}
+  .day .n{font-size:22px}
+  .day .wd{font-size:11px}
+  .day .ct{display:none}
+  .day .today{top:7px;right:4px;width:7px;height:7px;padding:0;font-size:0;border-radius:50%}
+  .day.c-pack .n{font-size:15px}
+  .day.c-pack .ct{display:block;font-size:11px}
+  .day.c-pack .wd{display:none}
+}
+/* day head */
+.day-view{padding-top:26px}
+.dhead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:start;margin-bottom:24px}
+.dnum{font-family:var(--f-dnum);font-weight:var(--w-dnum);font-size:clamp(84px,14vw,148px);line-height:.82;color:var(--city);font-variant-numeric:tabular-nums;margin-top:2px}
+.dnum small{display:block;font-family:var(--f-body);font-size:13px;line-height:1.2;color:var(--ink-2);margin-top:10px;text-align:center}
+.dmeta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13.5px;color:var(--ink-2);margin:0 0 6px}
+.dmeta .city{font-weight:700;color:var(--city);display:inline-flex;align-items:center;gap:6px}
+.dmeta .city::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--city)}
+.hol-badge{font-size:12px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--saffron-soft);color:var(--saffron-ink)}
+.dhead h2{font-family:var(--f-h2);font-weight:var(--w-h2);font-size:clamp(26px,3.6vw,38px);line-height:1.25;margin:0;text-wrap:balance}
+.dhead .sub{margin:8px 0 0;color:var(--ink-2);max-width:60ch;text-wrap:pretty}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--ink-2)}
+.stats li{display:flex;align-items:baseline;gap:6px}
+.stats b{font-family:var(--f-time);font-weight:var(--w-time);font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats .warn b,.stats .warn{color:var(--red)}
+.stats .ok{color:var(--green)}
+@media (max-width:560px){.dhead{grid-template-columns:minmax(0,1fr)}.dnum{display:flex;align-items:baseline;gap:10px;font-size:76px}.dnum small{display:inline;margin:0}}
+
+/* next up (only on a trip day) */
+.nextup{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 16px;border-radius:14px;background:var(--saffron-soft);margin-bottom:22px}
+.nextup .lbl{font-size:12px;font-weight:700;color:var(--saffron-ink)}
+.nextup .t{font-family:var(--f-time);font-weight:var(--w-time);font-variant-numeric:tabular-nums}
+.nextup .what{font-weight:700;min-width:0}
+.nextup .eta{font-size:13px;color:var(--ink-2)}
+.nextup a{margin-left:auto;font-size:13.5px;font-weight:700;text-decoration:none;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--on-ink)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,1fr);gap:28px 40px;align-items:start}
+.side{display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--strip-h) + 14px);max-height:calc(100dvh - var(--strip-h) - 28px);overflow:auto;scrollbar-width:thin;overscroll-behavior:contain;border-radius:16px}
+@media (max-width:900px){
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .side{display:contents}
+  .p-map{order:-1}
+}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0}
+.it{display:grid;grid-template-columns:52px 22px minmax(0,1fr);column-gap:12px;position:relative}
+@media (max-width:560px){.it{grid-template-columns:42px 20px minmax(0,1fr);column-gap:8px}.it .t{font-size:13px}.it .body{padding-inline:8px}}
+.it .t{font-family:var(--f-time);font-weight:var(--w-time);font-size:14px;line-height:1.3;font-variant-numeric:tabular-nums;color:var(--ink);text-align:right;padding-top:15px}
+.it .t small{display:block;font-size:12px;color:var(--ink-3)}
+.it .t.flex{font-family:var(--f-body);font-size:12px;color:var(--ink-3)}
+.rail{position:relative;display:flex;justify-content:center}
+.rail::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--line)}
+.it:first-child .rail::before{top:18px}
+.it:last-child .rail::before{bottom:auto;height:18px}
+.it.flex .rail::before{background:repeating-linear-gradient(to bottom,var(--line) 0 4px,transparent 4px 8px)}
+.node{appearance:none;-webkit-appearance:none;position:relative;z-index:1;margin:14px 0 0;width:20px;height:20px;border-radius:50%;border:2px solid var(--city);background:var(--bg);cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .15s}
+.node:hover{transform:scale(1.12)}
+.node::after{content:"";width:6px;height:10px;border:solid var(--on-ink);border-width:0 2px 2px 0;transform:translate(0,-1px) rotate(45deg) scale(0);transition:transform .15s}
+.node:checked{background:var(--city)}
+.node:checked::after{transform:translate(0,-1px) rotate(45deg) scale(1)}
+.it.fixed .node{border-width:5px}
+.it.fixed .node:checked{border-width:2px}
+.it .body{min-width:0;display:grid;gap:5px;padding:11px 12px 14px;margin:2px 0;border-radius:12px;transition:background .15s}
+.it.hot .body{background:var(--paper);box-shadow:var(--shadow)}
+.it .h{line-height:1.5}
+.it .h>*{vertical-align:2px;margin-left:6px}
+.it .h>.num{margin:0 8px 0 0;vertical-align:3px}
+.it h3{display:inline;font-family:var(--f-h3);font-size:16.5px;font-weight:var(--w-h3);margin:0 !important;line-height:1.45;vertical-align:baseline !important}
+.it p{margin:0;color:var(--ink-2);font-size:14px;line-height:1.65;max-width:62ch}
+.it .meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:13px;margin-top:2px}
+.it.done h3{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--ink-3)}
+.it.done p,.it.done .meta,.it.done .chip,.it.done .num{opacity:.5}
+.it.now .node{box-shadow:0 0 0 5px color-mix(in srgb,var(--saffron) 35%,transparent)}
+.it.now .body{background:var(--saffron-soft)}
+.now-tag{font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px;background:var(--saffron);color:#1A1200}
+
+.num{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border-radius:999px;border:0;background:var(--city);color:var(--on-ink);font-family:var(--f-num);font-size:12px;font-weight:600;cursor:pointer;flex:0 0 auto;transition:transform .15s}
+.num:hover{transform:scale(1.1)}
+.num.opt{background:transparent;color:var(--city);box-shadow:inset 0 0 0 1.5px var(--city)}
+.num.on{background:var(--saffron);color:#1A1200;box-shadow:none}
+.chip{display:inline-flex;align-items:center;font-family:var(--f-chip);font-size:12px;font-weight:var(--w-chip);line-height:1.5;padding:0 8px;border-radius:999px;white-space:nowrap}
+.chip.fixed{background:var(--ink);color:var(--on-ink)}
+.chip.book{background:var(--saffron-soft);color:var(--saffron-ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--saffron) 45%,transparent)}
+.chip.opt{color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line-2)}
+.chip.food{background:var(--paprika-soft);color:var(--paprika)}
+.chip.shot{background:var(--cobalt);color:var(--paper)}
+.see{margin:0;font-size:13.5px;line-height:1.65;color:var(--ink);max-width:62ch}
+.see b,.shots b{font-family:var(--f-chip);font-weight:var(--w-chip);font-size:12px;margin-right:6px}
+.see b{color:var(--bcn)} .c-mad .see b{color:var(--mad)}
+.eats{margin:0;font-size:13.5px;line-height:1.7;max-width:62ch}
+.eats b{font-family:var(--f-chip);font-weight:var(--w-chip);font-size:12px;margin-right:6px;color:var(--paprika)}
+.eats .dish{font-weight:500}
+.eats .dish.st::after{content:"很多人推";font-family:var(--f-chip);font-size:11px;font-weight:var(--w-chip);margin-left:4px;padding:0 6px;border-radius:999px;background:var(--paprika-soft);color:var(--paprika);vertical-align:1px}
+.eats small{font-size:12.5px;color:var(--ink-2);font-weight:400}
+.dish-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px}
+.dish-list li{display:grid;gap:2px}
+.dish-list .dn{font-weight:700}
+.dish-list .wh{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.dish-list button{all:unset;cursor:pointer;color:var(--cobalt)}
+.dish-list button:hover{text-decoration:underline}
+.shots{display:grid;gap:2px;margin:2px 0;padding:6px 10px;border-radius:10px;background:var(--cobalt-soft);font-size:13.5px}
+.shots b{color:var(--cobalt)}
+.shots span{display:block}
+.shot-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+.shot-list li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;align-items:baseline}
+.shot-list .w{font-family:var(--f-time);font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.shot-list button{all:unset;cursor:pointer;color:var(--ink)}
+.shot-list button:hover{color:var(--cobalt);text-decoration:underline}
+.shot-list small{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+.maplink{display:inline-flex;align-items:center;gap:4px;font-weight:500;text-decoration:none;color:var(--cobalt)}
+.maplink:hover{text-decoration:underline}
+.hrs{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;color:var(--ink-2)}
+.hrs .v{font-family:var(--f-time);font-size:12.5px;font-weight:var(--w-time);color:var(--green);font-variant-numeric:tabular-nums}
+.hrs .v.closed{color:var(--red)}
+.hrs .na{color:var(--ink-3)}
+.bad{font-size:12px;font-weight:700;padding:0 8px;border-radius:999px;background:var(--red-soft);color:var(--red)}
+.week-d{font-size:12.5px}
+.week-d[open]{flex-basis:100%}
+.week-d summary{cursor:pointer;color:var(--ink-3);width:max-content;list-style:none}
+.week-d summary::-webkit-details-marker{display:none}
+.week-d summary::before{content:"▸ ";font-size:10px}
+.week-d[open] summary::before{content:"▾ "}
+.week{border-collapse:collapse;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.week th{font-weight:400;color:var(--ink-3);text-align:left;padding:1px 14px 1px 0;white-space:nowrap}
+.week td{font-family:var(--f-time);font-size:12px;padding:1px 0;color:var(--ink-2)}
+.week tr.cur th,.week tr.cur td{color:var(--ink);font-weight:600}
+.week .hol{font-family:var(--f-body);font-size:11px;color:var(--saffron-ink);font-weight:700}
+
+/* panels */
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;min-width:0}
+.panel h4{margin:0;font-family:var(--f-h4);font-size:19px;font-weight:var(--w-h4);line-height:1.3;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.panel h4 small{font-family:var(--f-body);font-size:12.5px;font-weight:400;color:var(--ink-3)}
+.mapbox{background:var(--map-bg);border-radius:12px;overflow:hidden;position:relative}
+.mapbox svg{display:block;width:100%;height:auto}
+.pt{cursor:pointer}
+.pt circle{transition:r .15s}
+.pt .lbl{display:none;font-family:var(--f-body);font-size:12px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--map-bg);stroke-width:4px;stroke-linejoin:round}
+.pt.on .lbl{display:block}
+.pt.on circle{r:13;fill:var(--saffron);stroke:var(--saffron)}
+.pt.on text.n{fill:#1A1200}
+.pt:focus-visible{outline:none}
+.pt:focus-visible circle{stroke:var(--ink);stroke-width:3}
+.route-btns{display:flex;flex-wrap:wrap;gap:8px}
+.route-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--on-ink);text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:999px;transition:transform .15s}
+.route-btn:hover{transform:translateY(-1px)}
+.route-btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.mapnote{font-size:12.5px;color:var(--ink-3);margin:0;line-height:1.55}
+.empty-map{padding:40px 20px;text-align:center;color:var(--ink-2);font-size:14px}
+.empty-map b{display:block;font-family:var(--f-dnum);font-weight:400;font-size:30px;color:var(--ink);margin-bottom:4px}
+.places summary{cursor:pointer;font-size:13px;color:var(--ink-2);width:max-content}
+.legend-list{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 12px;font-size:13px}
+.legend-list li{display:flex;gap:8px;align-items:center;min-width:0}
+.legend-list a{color:var(--ink);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.legend-list a:hover{color:var(--cobalt)}
+.notes{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:14px;counter-reset:n}
+.notes li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;line-height:1.6}
+.notes li::before{counter-increment:n;content:counter(n);font-family:var(--f-time);font-size:12px;font-weight:600;color:var(--city);padding-top:2px}
+.foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 24px}
+
+/* packing */
+.pk-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 24px;align-items:center;margin-bottom:28px}
+.ring{width:112px;height:112px;position:relative;display:grid;place-items:center}
+.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring .pc{font-family:var(--f-dnum);font-weight:var(--w-dnum);font-size:34px;line-height:1}
+.ring .pc small{font-family:var(--f-body);font-size:12px;color:var(--ink-2);display:block;text-align:center;margin-top:4px}
+.pk-head h2{font-family:var(--f-h2);font-weight:var(--w-h2);font-size:clamp(30px,4vw,40px);margin:0;line-height:1.2}
+.pk-head p{margin:6px 0 0;color:var(--ink-2);max-width:60ch}
+.pk-head .row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:10px;font-size:13px;color:var(--ink-2)}
+.pk-reset{font-size:12.5px;background:none;border:1px solid var(--line-2);color:var(--ink-2);border-radius:999px;padding:3px 12px;cursor:pointer}
+.pk-reset.armed{border-color:var(--red);color:var(--red)}
+.pk-filter{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:2px}
+.pk-filter button{border:0;background:none;padding:3px 12px;border-radius:999px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.pk-filter button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.pk-cols{columns:2 280px;column-gap:28px;min-width:0}
+.pk-sec{break-inside:avoid;margin-bottom:26px}
+.pk-sec h3{font-family:var(--f-h4);font-weight:var(--w-h4);font-size:20px;margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+.pk-n{font-family:var(--f-time);font-size:12px;color:var(--ink-3);font-weight:500}
+.pk-n.full{color:var(--green)}
+.pk-list{list-style:none;margin:0;padding:0}
+.pk-it{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;padding:8px 0;border-top:1px solid var(--line)}
+.pk-it .node{--city:var(--green);margin:2px 0 0;width:20px;height:20px}
+.pk-it label{cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
+.pk-name{font-weight:500}
+.pk-note{flex-basis:100%;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+.pk-it.done .pk-name{text-decoration:line-through;color:var(--ink-3)}
+.pk-it.done .pk-note,.pk-it.done .pk-tag{opacity:.5}
+.hide-done .pk-it.done{display:none}
+.pk-tag{font-family:var(--f-chip);font-size:11px;font-weight:var(--w-chip);padding:0 7px;border-radius:999px;white-space:nowrap}
+.pk-tag.add{color:var(--cobalt);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cobalt) 40%,transparent)}
+.pk-tag.maybe{background:var(--saffron-soft);color:var(--saffron-ink)}
+.tips{margin:0;padding:0;list-style:none;display:grid;gap:14px;font-size:14.5px}
+.tips li{display:grid;gap:3px;padding-left:14px;border-left:2px solid var(--saffron)}
+.tips .q{font-family:var(--f-h4);font-size:16px;line-height:1.5}
+.tip-apply{font-size:12.5px;color:var(--ink-2)}
+.tip-apply b{color:var(--saffron-ink)}
+
+@media (prefers-reduced-motion:no-preference){
+  .dnum,.dhead>div{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+  .dhead>div{animation-delay:.05s}
+  .tl .it,.pk-sec{animation:rise .4s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(min(var(--i,0),12) * 22ms + 60ms)}
+  .side>*{animation:rise .45s cubic-bezier(.2,.7,.2,1) .1s both}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <h1><span class="zh">西班牙之旅</span><span class="es"><i>Barcelona</i> y <b>Madrid</b></span></h1>
+    </div>
+  </header>
+
+</div>
+<div class="strip-shell" id="strip-shell">
+  <nav class="strip" id="days" role="tablist" aria-label="選擇日期"></nav>
+</div>
+<div class="wrap wrap-main">
+  <main id="view"></main>
+
+  <footer class="foot">
+    <span>營業時間是 10/9 從 Google 地圖抓的，出發前再看一次。</span>
+    <span>打勾的紀錄只存在這台裝置的瀏覽器。</span>
+  </footer>
+</div>
+
+<script>
+// Places from the three saved Google Maps lists: [lat, lng, cid]
+const P = {"Casa Pince":[41.381173,2.175047,"9820200102320385984"],"Hostal Sun Gate":[40.416535,-3.70173,"16086359404234117766"],"DeLaCrem":[41.387903,2.161942,"25112469904463023"],"Tapa Tapa":[41.391693,2.166097,"6479534183230986483"],"Cerveceria Catalana":[41.392325,2.160851,"7860387390770853690"],"Xurreria Laietana":[41.386403,2.175689,"16650918293944019507"],"巴特略之家":[41.3917,2.164918,"4670927909449256463"],"米拉之家":[41.395215,2.161902,"14168222595362004586"],"聖家堂":[41.40363,2.174356,"11229913421514525008"],"Jon Cake":[41.387245,2.177665,"792783488706446674"],"El Glop Gaudí":[41.403075,2.176784,"6297366523246143669"],"桂爾公園":[41.414495,2.152694,"9915250311879642712"],"畢卡索美術館":[41.385271,2.180947,"2810561113253530723"],"Boqueria 市場":[41.38174,2.171585,"9658750418627571157"],"巴塞隆納主教座堂":[41.383962,2.176199,"1654528761399433347"],"聖家堂旁遊樂區":[41.404732,2.175739,"17943976081825135387"],"Bunkers del Carmel":[41.419236,2.161779,"8714113821680467939"],"Pg. de Colom":[41.378613,2.180042,"14537376047164598312"],"Carrer dels Sagristans":[41.385234,2.175568,"917952042337961630"],"Sant Pau 建築群":[41.411707,2.174339,"142643090380976527"],"馬德里王宮":[40.417955,-3.714312,"3350656655825979473"],"麗池公園":[40.417142,-3.683901,"7880677247072096712"],"水晶宮":[40.413635,-3.682,"8767359853343406681"],"德波神廟":[40.424022,-3.717769,"2119746020307306155"],"主廣場":[40.415511,-3.707401,"5306995542395525148"],"Chocolatería San Ginés":[40.416739,-3.706936,"7536165071040463829"],"Pan y Pepinillos":[40.423764,-3.702707,"18078546263421961636"],"聖米格爾市場":[40.415379,-3.70897,"1598750187957883112"],"加泰羅尼亞音樂宮":[41.387575,2.175313,"9199275919195466819"],"Museo del Jamón":[40.416293,-3.705636,"16408719061269755075"],"小老鼠 Pérez 信箱":[40.417185,-3.70543,"12840257466778975974"],"桂爾公園入口（Carrer d'Olot, 4）":[41.412796,2.15231,"16736093313459988453"],"Nomad Coffee":[41.388922,2.177039,"12439994604101508885"],"Vinitus":[41.390026,2.164048,"10700564397123021420"],"Plaça Reial":[41.380124,2.175162,"6001637926024563725"],"主教橋":[41.383302,2.176423,"7076128581345844409"],"La Rambla":[41.385609,2.169817,"2647825951332941252"],"Bar Cañete":[41.379153,2.173125,"2051304937619323747"],"La Postalera":[40.422099,-3.704451,"13276360248470159119"],"聖卡特琳娜市場":[41.386361,2.178157,"14937829789821265278"],"凱旋門":[41.391052,2.180645,"12249276071227659697"],"Cereria Subirà":[41.383784,2.178033,"2047839855194409390"],"索菲亞王后藝術中心":[40.407912,-3.694557,"3501571599666691953"],"拉斯班塔斯鬥牛場":[40.432136,-3.663291,"13715529361605372360"],"熊與莓樹":[40.417031,-3.702742,"12646677888797041361"],"Casa Hernanz":[40.414227,-3.707635,"17464590132735572138"],"DOOC Atocha":[40.412329,-3.698707,"18218595561032067079"],"Gracias Mamá":[40.416265,-3.707742,"14264178942075525462"],"Real Fábrica Cervantes":[40.414406,-3.697668,"12371697064622685121"],"El Moderno":[40.422371,-3.704341,"17099219292203713127"],"San Ginés Book Shop":[40.417138,-3.706749,"14024310283338488591"],"La Europea":[40.424016,-3.697255,"17268882650416866305"],"Mantequería Bermejo":[40.415405,-3.705846,"558232450492309328"],"La Antigua":[40.423168,-3.70301,"14758149942575606117"],"Ofelia Home & Decor":[40.423288,-3.695616,"14162612823510262650"],"Casa Gonzalez & Gonzalez":[40.424587,-3.697063,"8603680992487786279"],"Nest Boutique":[40.424008,-3.702303,"1744206158007677713"],"SLOWLY Concept Store":[40.424139,-3.696293,"9648815102169505855"],"維森斯之家":[41.403498,2.150645,"14911989149547758151"],"CARACOLA Antón Martín":[40.41161,-3.698647,"3953549142367180470"],"Cheesebakers":[41.39991,2.166853,"13911125691914111565"],"海洋聖母聖殿":[41.383887,2.182071,"13023447345839268192"],
+// Not in the lists: linked by search
+"巴塞隆納機場 (BCN)":[41.2974,2.0833,null,"Barcelona El Prat Airport"],
+"Barcelona Sants 車站":[41.3792,2.1402,null,"Estació de Barcelona Sants"],
+"Madrid Puerta de Atocha 車站":[40.4066,-3.6907,null,"Estación de Madrid Puerta de Atocha"],
+"馬德里機場 (MAD)":[40.4936,-3.5668,null,"Aeropuerto Adolfo Suárez Madrid-Barajas"]
+};
+const gUrl = n => { const p=P[n]; return p[2] ? `https://maps.google.com/?cid=${p[2]}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[3]||n)}`; };
+const navUrl = n => `https://www.google.com/maps/dir/?api=1&destination=${P[n][0]},${P[n][1]}`;
+
+// Opening hours read from Google Maps on 2026-10-09, for 10/9 (Fri) … 10/15 (Thu). "x" = closed, "24" = open 24 hours.
+// 10/10 = index 1 … 10/15 = index 6; 10/16 (Fri) uses the Friday value.
+const A=s=>Array(7).fill(s);
+const W=(fri,sat,sun,mon,rest)=>[fri,sat,sun,mon,rest,rest,rest];
+const H={
+ "DeLaCrem":["9:30-0:30","10-0:30","10-0:30","9:30-0:30","9:30-0:30","9:30-0:30","9:30-0:30"],
+ "Tapa Tapa":W("9-23:15","9-23:15","9-22:45","8-22:45","8-22:45"),
+ "Cerveceria Catalana":A("8:30-1"),
+ "Xurreria Laietana":W("7-21:30","8-21:30","8-21:30","8-21:30","7-21:30"),
+ "巴特略之家":A("8:30-22:30"),
+ "米拉之家":A("9-23"),
+ "聖家堂":W("9-20","9-18","10:30-20","9-20","9-20"),
+ "Jon Cake":A("8-20"),
+ "El Glop Gaudí":W("8-24","12-24","12-24","8-24","8-24"),
+ "桂爾公園":A("9:30-19:30"),
+ "畢卡索美術館":W("10-19","10-19","10-19","x","10-19"),
+ "Boqueria 市場":W("8-20:30","8-20:30","x","x","8-20:30"),
+ "巴塞隆納主教座堂":W("9:30-17:45","9:30-17:15","14-16:30","9:30-17:45","9:30-17:45"),
+ "聖家堂旁遊樂區":A("24"),
+ "Bunkers del Carmel":A("9-19:30"),
+ "Sant Pau 建築群":A("9:30-18:30"),
+ "馬德里王宮":W("10-18","10-18","10-15","10-18","10-18"),
+ "麗池公園":A("10-14,15:30-20"),
+ "德波神廟":W("10-20","10-20","10-20","x","10-20"),
+ "Chocolatería San Ginés":A("24"),
+ "Pan y Pepinillos":A("8-20"),
+ "聖米格爾市場":W("10-1","10-1","10-24","10-24","10-24"),
+ "Museo del Jamón":W("9-1","9-1","9-24","9-24","9-24"),
+ "Nomad Coffee":W("8:30-19","x","x","x","8:30-19"),
+ "Vinitus":A("11-1"),
+ "Bar Cañete":W("13-24","13-24","x","13-24","13-24"),
+ "La Postalera":W("11-21","11-21","11-20","11-21","11-21"),
+ "聖卡特琳娜市場":["7:30-20","7:30-15:30","x","x","7:30-20","7:30-15:30","7:30-20"],
+ "凱旋門":A("24"),
+ "Cereria Subirà":W("10-20","10-20","x","x","10-20"),
+ "索菲亞王后藝術中心":["10-21","10-21","10-14:30","10-21","x","10-21","10-21"],
+ "熊與莓樹":A("24"),
+ "Casa Hernanz":W("9:30-13:30,16:30-20","10-14","x","x","9:30-13:30,16:30-20"),
+ "DOOC Atocha":W("12-15,16:30-21","12-15,16-20","x","x","12-15,16:30-21"),
+ "Gracias Mamá":W("10:30-21","10:30-21","11-20:30","10:30-21","10:30-21"),
+ "Real Fábrica Cervantes":A("11-20"),
+ "El Moderno":A("11-21"),
+ "La Europea":W("11-14,16-20","11-14","x","11-14,16-20","11-14,16-20"),
+ "Mantequería Bermejo":A("9:30-20"),
+ "La Antigua":W("11-20","11-20","x","11-20","11-20"),
+ "Ofelia Home & Decor":W("x","10:30-20:30","x","x","10:30-20:30"),
+ "Casa Gonzalez & Gonzalez":W("11-14:30,17-20:30","11-15,16:30-20:30","x","x","11-14:30,17-20:30"),
+ "Nest Boutique":W("10:30-14:30,16-20:30","11-15,16-20:30","12-15,16-19","10:30-14:30,16-20:30","10:30-14:30,16-20:30"),
+ "SLOWLY Concept Store":W("11-21","11-20:30","x","12-20","11-15,16-21"),
+ "維森斯之家":A("9-20"),
+ "CARACOLA Antón Martín":W("9-21","9-21","10-21","9-21","9-21"),
+ "Cheesebakers":W("9:30-20","9:30-20","9:30-20","x","9:30-20"),
+ "海洋聖母聖殿":W("10-18","10-18","13-18","10-18","10-18")
+};
+// Places with no hours on Google Maps
+const NOH={"Casa Pince":"旅館","Hostal Sun Gate":"旅館","La Rambla":"戶外，隨時可去","Plaça Reial":"戶外，隨時可去","Carrer dels Sagristans":"戶外，隨時可去","主教橋":"戶外，隨時可去","Pg. de Colom":"戶外，隨時可去","主廣場":"戶外，隨時可去","小老鼠 Pérez 信箱":"戶外，隨時可去","桂爾公園入口（Carrer d'Olot, 4）":"照門票時段入場","加泰羅尼亞音樂宮":"Google 地圖沒寫，導覽時段看官網","水晶宮":"Google 地圖沒寫，換展期間可能不開","San Ginés Book Shop":"Google 地圖沒寫","巴塞隆納機場 (BCN)":"機場","馬德里機場 (MAD)":"機場","Barcelona Sants 車站":"車站","Madrid Puerta de Atocha 車站":"車站"};
+const WD=["日","一","二","三","四","五","六"];
+const hm=s=>{const [h,m]=s.split(":").map(Number);return h*60+(m||0)};
+const pad=s=>{const [h,m]=s.split(":");return String(h).padStart(2,"0")+":"+(m||"00")};
+function hoursOn(place,date){
+  if(!H[place]) return null;
+  const d=+date.slice(8); return H[place][d===16?0:d-9];
+}
+function fmtHours(v){ if(v==="x") return "公休"; if(v==="24") return "24 小時"; return v.split(",").map(r=>r.split("-").map(pad).join("–")).join("、"); }
+function openAt(v,t){
+  if(v==="x") return false; if(v==="24"||!t) return true;
+  const m=hm(t);
+  return v.split(",").some(r=>{let [a,b]=r.split("-").map(hm); if(b<=a) b+=1440; return m>=a&&m<b;});
+}
+
+// tag: fixed | book | opt | food
+const DAYS = [
+{id:"d0",date:"2026-10-10",md:"10/10",wd:"週六",city:"出發",title:"Raleigh → Boston → 巴塞隆納",sub:"整天都在路上。晚上那班跨大西洋的紅眼班機，能睡就睡。",
+ items:[
+  {t:"08:50",title:"抵達 RDU 機場",desc:"國內線提早 2 小時到。護照放隨身包。"},
+  {t:"10:55",end:"12:50",title:"RDU → BOS（B62084）",tag:"fixed",desc:"飛 1 小時 55 分。"},
+  {t:"12:50",end:"20:38",title:"波士頓轉機",desc:"要等 7 小時 45 分。先查國際線在哪個航廈。如果跟國內段不是同一張票，要領行李重新託運。上飛機前好好吃一頓。"},
+  {t:"20:38",title:"BOS → 巴塞隆納",tag:"fixed",desc:"紅眼班機，隔天 09:50 到。一上飛機就把手錶調成西班牙時間（比美東快 6 小時）。"}
+ ],
+ notes:["已經訂好的票有主教座堂 10/11 15:30、畢卡索 10/11 16:30、巴特略 10/12 08:45、米拉 10/12 11:00、桂爾公園 10/12 15:30、音樂宮 10/13 10:30、聖家堂 10/13 17:45、馬德里王宮 10/14 14:30。Sant Pau 還沒訂。","歐盟入境現在會拍照、按指紋（EES），排隊可能比較久。ETIAS 預計 2026 年底上路，出發前再查一次要不要辦。","Google 地圖先下載巴塞隆納跟馬德里的離線地圖。","帶一點歐元現金就好，大部分地方都能感應刷卡。"]},
+
+{id:"d1",date:"2026-10-11",md:"10/11",wd:"週日",city:"巴塞隆納",title:"抵達，逛哥德區跟 Born 區",sub:"第一天不排太滿，全程走路順便調時差。週日很多地方早關，順序已經照營業時間排好。",
+ items:[
+  {t:"09:50",title:"降落巴塞隆納機場",shots:["巴塞隆納機場飛機"],place:"巴塞隆納機場 (BCN)",tag:"fixed",desc:"入境加領行李大概 1 小時。"},
+  {t:"11:00",title:"進市區",desc:"Aerobús 坐到 Plaça Catalunya 約 35 分鐘，再走 10 分鐘到旅館。不想轉就直接搭計程車，約 €35–40。"},
+  {t:"12:00",title:"Casa Pince 寄放行李",place:"Casa Pince",desc:"通常 15:00 後才能入住，先寄放。"},
+  {t:"12:30",title:"午餐：旅館附近找 tapas",tag:"food",desc:"Bar Cañete 週日公休，改到 10/12 晚餐。"},
+  {t:"13:30",title:"La Rambla",see:"中間是行人步道，兩邊是花攤跟報攤。中段 Liceu 站旁邊地上有米羅的馬賽克。",shots:["自拍茄速前進"],place:"La Rambla",desc:"往北走一小段就好。人很多，小心扒手。"},
+  {t:"13:45",title:"Plaça Reial 皇家廣場",see:"噴泉兩側那兩支有頭盔的路燈是高第設計的。四周拱廊下整圈都是露天餐廳。",shots:["路邊棚子餐廳（一個人追）"],place:"Plaça Reial",desc:"看高第設計的路燈。"},
+  {t:"14:15",title:"海洋聖母聖殿",see:"加泰隆尼亞哥德式，裡面柱子很細、空間很高。正面的玫瑰窗。",place:"海洋聖母聖殿",tag:"opt",desc:"週日 13:00–18:00 開，看完美術館就關了，所以先來。"},
+  {t:"14:50",title:"Xurreria Laietana 吉拿棒",place:"Xurreria Laietana",tag:"food"},
+  {t:"15:05",title:"主教橋",see:"在 Carrer del Bisbe，從主教座堂這頭往橋拍，拱橋跟窄巷會一起入鏡。",place:"主教橋",desc:"哥德區最常被拍的那座拱橋。"},
+  {t:"15:15",title:"Carrer dels Sagristans",place:"Carrer dels Sagristans",desc:"大教堂旁邊的小街，從這裡繞到主教座堂正門。"},
+  {t:"15:30",title:"巴塞隆納主教座堂",see:"哥德式正面、迴廊裡養的 13 隻白鵝，再搭電梯上屋頂看哥德區。",place:"巴塞隆納主教座堂",tag:"fixed",desc:"票是 15:30。週日 16:30 就關，看 45 分鐘左右，屋頂記得上去。16:15 出來走去畢卡索，大概 8 分鐘。"},
+  {t:"16:30",title:"畢卡索美術館",see:"收藏偏畢卡索早期作品。一定要看他重畫維拉斯奎茲《侍女》的那一整個系列。",place:"畢卡索美術館",tag:"fixed",desc:"票是 16:30，開到 19:00。大概逛 1.5 小時。"},
+  {t:"18:15",title:"Pg. de Colom 港邊散步、看夕陽",see:"La Rambla 走到底就是哥倫布紀念柱，從這裡沿港口散步。",shots:["哥倫布之塔（由上往下）"],place:"Pg. de Colom",desc:"日落大約 19:10。"},
+  {t:"20:00",title:"旅館附近吃晚餐，早點睡",place:"Casa Pince"}
+ ],
+ notes:["週日 Boqueria、聖卡特琳娜市場、Cereria Subirà 都沒開，Nomad Coffee 週末也休息，這些全部移到週二。","主教座堂週日只開 14:00–16:30，海洋聖母聖殿週日只開 13:00–18:00。","La Rambla 跟地鐵扒手很多。手機不要放後口袋，背包背前面。","西班牙晚餐大概 20:30 才開始，下午先吃點 tapas 墊肚子。"]},
+
+{id:"d2",date:"2026-10-12",md:"10/12",wd:"週一",city:"巴塞隆納",holiday:"國慶日",title:"高第日：巴特略、米拉、桂爾公園、Bunkers 夕陽",sub:"早上在擴建區看高第的房子，下午上山，最後在 Bunkers 看夕陽。",
+ items:[
+  {t:"08:15",title:"從旅館出發",place:"Casa Pince",desc:"地鐵 L3 Liceu → Passeig de Gràcia，或走路 25 分鐘。"},
+  {t:"08:45",title:"巴特略之家",see:"外牆像龍的鱗片，屋頂是龍背。裡面看主樓層的大窗，還有中庭由淺到深的藍色磁磚。",place:"巴特略之家",tag:"fixed",desc:"票是 08:45。大概看 1 小時 15 分，10:00 左右出來。隔壁就是 Casa Amatller，再過去是 Casa Lleó Morera，三棟合稱不和諧街區，外觀拍一拍再慢慢走去米拉之家。"},
+  {t:"11:00",title:"米拉之家",see:"屋頂那群像戰士頭盔的煙囪，還有頂樓閣樓的磚拱，裡面展高第的建築模型。",place:"米拉之家",tag:"fixed",desc:"票是 11:00。從巴特略沿 Passeig de Gràcia 走過來 10 分鐘。屋頂的煙囪一定要上去看。也是 1 小時 15 分左右。"},
+  {t:"12:45",title:"午餐：Cerveceria Catalana",eats:[["辣醬馬鈴薯塊", "招牌", 1], ["蕃茄麵包", "", 0], ["炸丸子", "", 0]],place:"Cerveceria Catalana",tag:"food",desc:"超熱門，早點去排。客滿就改去 Vinitus 或 Tapa Tapa。"},
+  {t:"",title:"備案：Vinitus",eats:[["炸丸子", "火腿口味", 0], ["馬鈴薯烘蛋", "", 0]],place:"Vinitus",tag:"opt"},
+  {t:"",title:"備案：Tapa Tapa Passeig de Gràcia",eats:[["辣醬馬鈴薯塊", "", 0]],place:"Tapa Tapa",tag:"opt"},
+  {t:"14:15",title:"DeLaCrem 冰淇淋",place:"DeLaCrem",tag:"food",desc:"在 Enric Granados，這條街很好逛。"},
+  {t:"15:00",title:"搭計程車上桂爾公園",desc:"約 15 分鐘。公車 V17 或 24 也可以。"},
+  {t:"15:30",title:"桂爾公園（從 Carrer d'Olot, 4 入口進）",place:"桂爾公園入口（Carrer d'Olot, 4）",tag:"fixed",desc:"票是 15:30，入場時段要準時。"},
+  {t:"15:40",title:"桂爾公園紀念區",see:"主階梯中間的馬賽克大蜥蜴；往上是百柱廳，天花板有馬賽克圓盤；再上去是廣場邊的蛇形長椅，可以看整個巴塞隆納。",shots:["奎爾公園（柱子）", "奎爾公園（好大的蜥蜴哦）"],place:"桂爾公園",desc:"蜥蜴、百柱廳、蛇形長椅。大概逛 1.5 小時。"},
+  {t:"17:30",title:"去 Bunkers del Carmel",place:"Bunkers del Carmel",desc:"計程車 10 分鐘，走上坡 25 分鐘。免費。山上風大，帶外套。"},
+  {t:"19:10",title:"Bunkers 看夕陽",see:"西班牙內戰時的防空砲台。360 度看整個城市，聖家堂跟海都看得到。",place:"Bunkers del Carmel",desc:"Google 地圖寫 19:30 關，看完夕陽就下山。"},
+  {t:"20:30",title:"晚餐：Bar Cañete",eats:[["炸魷魚", "炸魷魚三明治", 1], ["炸丸子", "火腿口味", 1], ["蕃茄麵包", "", 0]],place:"Bar Cañete",tag:"food",desc:"從週日改到今天，週一 13:00–24:00 有開。先訂位。"},
+  {t:"",title:"維森斯之家（時間夠再去）",see:"外牆是綠白磁磚加萬壽菊圖案，跟後來的高第很不一樣。",place:"維森斯之家",tag:"opt",desc:"高第的第一棟房子，從桂爾公園走下坡 15 分鐘。"}
+ ],
+ notes:["今天是西班牙國慶日（Fiesta Nacional）。高第的建築照常開，但 Boqueria、聖卡特琳娜市場、畢卡索美術館、Cheesebakers、Nomad Coffee 都沒開。","巴特略 08:45、米拉 11:00、桂爾公園 15:30 都訂好了，都是限時段，QR code 先截圖。","Bunkers 下山的路很暗，看完夕陽直接叫計程車。"]},
+
+{id:"d3",date:"2026-10-13",md:"10/13",wd:"週二",city:"巴塞隆納",title:"市場、音樂宮、Sant Pau，17:45 進聖家堂",sub:"早上在舊城區逛市場跟小店，下午一路往北，最後進聖家堂。",
+ items:[
+  {t:"09:00",title:"Boqueria 市場吃早餐",see:"入口的鐵架彩色招牌很好拍。裡面喝現打果汁、吃一杯火腿。",place:"Boqueria 市場",tag:"food",desc:"離旅館很近。10:00 以後觀光客會多很多。"},
+  {t:"10:30",title:"加泰羅尼亞音樂宮導覽",see:"主廳天花板倒吊的彩繪玻璃天窗，還有舞台後牆浮出來的繆思女神雕像。",place:"加泰羅尼亞音樂宮",tag:"fixed",desc:"票是 10:30 的導覽，約 50 分鐘。裡面只有跟導覽或聽音樂會才進得去。"},
+  {t:"11:30",title:"Nomad Coffee",place:"Nomad Coffee",tag:"food"},
+  {t:"12:00",title:"聖卡特琳娜市場",place:"聖卡特琳娜市場",tag:"opt",desc:"屋頂是彩色的波浪磁磚。"},
+  {t:"12:20",title:"Jon Cake 起司蛋糕",place:"Jon Cake",tag:"food"},
+  {t:"12:45",title:"Cereria Subirà 老蠟燭店",see:"1761 年開的。店裡的雕花樓梯跟拿火炬的女神像。",place:"Cereria Subirà",tag:"opt",desc:"巴塞隆納最老的店之一。"},
+  {t:"13:15",title:"Born 區午餐",shots:["餐廳舉手（你好～西班牙海鮮燉飯不要青椒）"],tag:"food",desc:"吃西班牙海鮮燉飯（paella），順便拍舉手點餐那段。評論推 Casa Delfín（Passeig del Born 36），或是 1836 年開的 7 Portes（Passeig d'Isabel II 14，要訂位）。"},
+  {t:"14:30",title:"凱旋門",see:"紅磚拱門，1888 年世界博覽會的入口。往南一整條大道通到 Ciutadella 公園。",place:"凱旋門",tag:"opt",desc:"拍完照從 Arc de Triomf 站搭計程車或地鐵往北。"},
+  {t:"15:00",title:"Sant Pau 現代主義建築群",see:"以前是醫院，每棟病房都有磁磚屋頂。地下通道把各棟連在一起。",place:"Sant Pau 建築群",tag:"book",desc:"開到 18:30，大概逛 1.5 小時。票還沒訂，要記得先買。"},
+  {t:"16:40",title:"沿 Av. Gaudí 走到聖家堂",shots:["ㄛ～～～（看到勝家堂）"],desc:"走 10 分鐘，這條路正對著聖家堂。"},
+  {t:"16:55",title:"聖家堂旁的公園，湖邊拍照",see:"在 Plaça de Gaudí，湖對面正對誕生立面，倒影也拍得到。",shots:["勝家堂（由上往下）"],place:"聖家堂旁遊樂區",desc:"休息一下。從湖對面可以拍到誕生立面。"},
+  {t:"17:30",title:"到聖家堂入口排安檢",place:"聖家堂",tag:"fixed"},
+  {t:"17:45",title:"聖家堂入場",see:"東邊的誕生立面是高第親手做的，西邊的受難立面線條很硬。裡面像樹林的柱子，彩窗東邊偏藍綠、西邊偏橘紅。",place:"聖家堂",tag:"fixed",desc:"週二開到 20:00，可以看 2 小時左右。傍晚陽光從西側彩窗照進來，暖色光最漂亮，先看內部。"},
+  {t:"19:50",title:"晚餐：El Glop Gaudí",place:"El Glop Gaudí",tag:"food",desc:"開到 24:00。菜單上有辣醬馬鈴薯塊、炸小青椒、炸丸子、炸魷魚、加泰隆尼亞奶油，但評論沒特別推，當作保底。"},
+  {t:"",title:"Cheesebakers（20:00 關，要去就在聖家堂之前）",place:"Cheesebakers",tag:"opt"},
+  {t:"21:30",title:"回旅館打包",place:"Casa Pince",desc:"明天 08:00 就要出發去車站。"}
+ ],
+ notes:["聖家堂是教堂，肩膀要遮住，褲子跟裙子不要太短。","票上的 QR code 先截圖，不要賭現場有網路。","Google 地圖沒有音樂宮的營業時間，導覽時段看官網。","今晚就把行李收好，明天早上很趕。"]},
+
+{id:"d4",date:"2026-10-14",md:"10/14",wd:"週三",city:"馬德里",title:"火車到馬德里，逛老城區、王宮、德波神廟夕陽",sub:"09:00 從 Sants 坐到 Atocha。Casa Hernanz 13:30 就午休，放完行李直接過去。",
+ items:[
+  {t:"08:00",title:"退房出發",place:"Casa Pince",desc:"地鐵 L3 Liceu → Sants Estació，或搭計程車，都是 15 分鐘左右。"},
+  {t:"08:20",title:"Barcelona Sants 車站過安檢",place:"Barcelona Sants 車站",desc:"長途火車行李要過安檢，至少提早 30 分鐘到。"},
+  {t:"09:00",title:"火車出發去馬德里",tag:"fixed",desc:"2.5–3 小時，以車票上的時間為準。"},
+  {t:"11:45",title:"抵達 Madrid Puerta de Atocha",place:"Madrid Puerta de Atocha 車站",desc:"搭 Cercanías 坐一站到 Sol 就是旅館，或搭計程車 10 分鐘。"},
+  {t:"12:30",title:"Hostal Sun Gate 寄放行李",place:"Hostal Sun Gate"},
+  {t:"12:45",title:"Casa Hernanz 草編鞋",see:"百年老店，整面牆都是 espadrilles，尺寸顏色很齊。",place:"Casa Hernanz",tag:"opt",desc:"週三 09:30–13:30、16:30–20:00，中午會午休，13:30 前要到。"},
+  {t:"13:20",title:"主廣場",eats:[["炸魷魚", "旁邊 La Campana（C. de Botoneras 6）、Casa Rúa（C. de Ciudad Rodrigo 3）的三明治", 1]],see:"一圈紅色建築，北邊有壁畫那棟是 Casa de la Panadería。中間是菲利普三世騎馬像。",place:"主廣場"},
+  {t:"13:30",title:"午餐：聖米格爾市場",eats:[["炸丸子", "Arzábal 攤", 0], ["炸魷魚", "El Señor Martín 攤的三明治", 0], ["馬鈴薯烘蛋", "Picolisto 攤", 0]],see:"鐵架玻璃的老市場，一攤一攤 tapas，生蠔、橄欖串、火腿都有。",place:"聖米格爾市場",tag:"food"},
+  {t:"14:30",title:"馬德里王宮",meet:"C. de Carlos III, 1, Centro, 28013 Madrid, Spain",see:"王座廳的天花板壁畫（Tiepolo 畫的）、皇家藥房、兵器館。出來看對面的阿穆德納主教座堂。",place:"馬德里王宮",tag:"fixed",desc:"票是 14:30，集合地點在 C. de Carlos III, 1，從聖米格爾市場走過去不遠，提早 10 分鐘到。大概逛 1.5–2 小時。"},
+  {t:"17:30",title:"走去德波神廟，順便逛西班牙廣場",place:"德波神廟",desc:"從王宮走過去 15 分鐘。"},
+  {t:"19:20",title:"德波神廟看夕陽",see:"埃及送給西班牙的兩千多年古神廟。重點是水池倒影加夕陽。",place:"德波神廟",desc:"神廟裡面 20:00 關，外面的公園可以一直待到天黑。"},
+  {t:"20:30",title:"回太陽門看熊與莓樹",see:"馬德里的市徽。太陽門郵政總局門口地上有西班牙公路起點 Km 0 的牌子。",place:"熊與莓樹"},
+  {t:"20:40",title:"小老鼠 Pérez 信箱",see:"在 Calle del Arenal 8，牆上有小老鼠的牌子。",place:"小老鼠 Pérez 信箱",desc:"西班牙版的牙仙子。"},
+  {t:"20:50",title:"晚餐：Museo del Jamón",eats:[["炸魷魚", "三明治", 0]],see:"天花板掛滿火腿，站著吃最快。",place:"Museo del Jamón",tag:"food",desc:"火腿三明治，開到 24:00。"},
+  {t:"22:00",title:"San Ginés 吉拿棒配熱巧克力",see:"1894 年開的，在小巷 Pasadizo de San Ginés 裡。",place:"Chocolatería San Ginés",tag:"food",desc:"24 小時都開，就在旅館旁邊。"},
+  {t:"",title:"旅館旁小店：Gracias Mamá",place:"Gracias Mamá",tag:"opt",desc:"開到 21:00。"},
+  {t:"",title:"旅館旁小店：Mantequería Bermejo",place:"Mantequería Bermejo",tag:"opt",desc:"20:00 關，要早點去。"},
+  {t:"",title:"旅館旁小店：San Ginés Book Shop",place:"San Ginés Book Shop",tag:"opt"}
+ ],
+ notes:["Barcelona Sants 上車，Madrid Puerta de Atocha 下車。進站要過安檢，大行李也要過 X 光。","Casa Hernanz 週三 13:30–16:30 午休，所以放完行李先去。","王宮遇到官方活動會臨時關，出發前看一下官網。"]},
+
+{id:"d5",date:"2026-10-15",md:"10/15",wd:"週四",city:"馬德里",title:"麗池公園、索菲亞王后藝術中心、Malasaña 逛小店",sub:"早上公園跟美術館。17:00 小店都開了，再去 Malasaña 和 Chueca 一帶。",
+ items:[
+  {t:"10:00",title:"麗池公園大湖划船",see:"大湖邊的阿方索十二世紀念碑，划船時就在正前方。",place:"麗池公園",desc:"划船時間 10:00–14:00、15:30–20:00。"},
+  {t:"10:45",title:"水晶宮",see:"整棟鐵架玻璃屋蓋在小湖邊，裡面通常是當代藝術展。",place:"水晶宮",desc:"換展期間偶爾不開，Google 地圖也沒寫營業時間。"},
+  {t:"11:30",title:"Real Fábrica Cervantes",place:"Real Fábrica Cervantes",tag:"opt",desc:"11:00 開門。"},
+  {t:"12:00",title:"索菲亞王后藝術中心（看格爾尼卡）",see:"格爾尼卡在二樓 206 展廳，同一層還有達利跟米羅。",place:"索菲亞王后藝術中心",tag:"opt",desc:"週四 10:00–21:00（週二休館）。大概逛 1.5 小時。"},
+  {t:"13:35",title:"DOOC Atocha",place:"DOOC Atocha",tag:"opt",desc:"12:00–15:00 開，15:00 開始午休，要趕在午休前。"},
+  {t:"14:00",title:"午餐：Antón Martín 一帶",eats:[["馬鈴薯烘蛋", "CARACOLA 的招牌，裡面半熟", 1]],place:"CARACOLA Antón Martín",tag:"food"},
+  {t:"16:30",title:"去 Malasaña，Pan y Pepinillos 喝咖啡",place:"Pan y Pepinillos",tag:"food",desc:"地鐵到 Tribunal，或搭計程車 10 分鐘。開到 20:00。"},
+  {t:"17:00",title:"La Antigua",place:"La Antigua",tag:"opt"},
+  {t:"17:20",title:"El Moderno",place:"El Moderno",tag:"opt"},
+  {t:"17:35",title:"La Postalera",place:"La Postalera",tag:"opt"},
+  {t:"17:55",title:"Nest Boutique",place:"Nest Boutique",tag:"opt"},
+  {t:"18:20",title:"La Europea",place:"La Europea",tag:"opt",desc:"20:00 關。"},
+  {t:"18:40",title:"Casa Gonzalez & Gonzalez",place:"Casa Gonzalez & Gonzalez",tag:"opt"},
+  {t:"19:00",title:"SLOWLY Concept Store",place:"SLOWLY Concept Store",tag:"opt"},
+  {t:"19:20",title:"Ofelia Home & Decor",place:"Ofelia Home & Decor",tag:"opt",desc:"20:30 關。"},
+  {t:"20:30",title:"最後一晚吃好一點，回旅館打包",place:"Hostal Sun Gate",tag:"food"}
+ ],
+ notes:["很多小店中午會午休（DOOC 15:00–16:30、La Europea 14:00–16:00、Casa Gonzalez 14:30–17:00、Nest 14:30–16:00），所以逛店排在下午。","塞哥維亞要花一整天（從 Chamartín 搭 AVANT 約 30 分鐘）。真的想去就拿今天整天去，其他都取消。","拉斯班塔斯鬥牛場在東邊比較遠，有內部導覽（週四 10:00–18:00）。很想看再去。","同一間店買到一定金額就能退稅，記得跟店家拿退稅單，明天在機場辦。"]},
+{id:"d6",date:"2026-10-16",md:"10/16",wd:"週五",city:"回家",title:"馬德里 → Boston → Raleigh",sub:"上午就出發去機場。飛美國要提早 3 小時到。",
+ items:[
+  {t:"08:30",title:"早餐、退房",place:"Hostal Sun Gate",desc:"想再吃一次吉拿棒，San Ginés 就在旁邊。"},
+  {t:"09:45",title:"搭計程車去機場",desc:"市區到機場是固定價，約 €33，30 分鐘。地鐵也可以，但要轉車。"},
+  {t:"10:30",title:"抵達馬德里機場",place:"馬德里機場 (MAD)",desc:"先確認航廈。有退稅單的話，託運前先去 DIVA 機器掃。"},
+  {t:"13:30",end:"16:07",title:"MAD → BOS",tag:"fixed"},
+  {t:"16:07",end:"20:35",title:"波士頓入境轉機",desc:"過海關、領行李、重新託運、再過一次安檢。4.5 小時夠用。"},
+  {t:"20:35",end:"22:42",title:"BOS → RDU，回家",tag:"fixed"}
+ ],
+ notes:["飛美國要提早 3 小時到機場，會多一道安全問答。","退稅要在離開歐盟的最後一個機場辦，這趟就是馬德里。","火腿、香腸這類肉製品不能帶進美國。"]}
+];
+const CITY={"巴塞隆納":"bcn","馬德里":"mad","出發":"go","回家":"go"};
+const cityOf=d=>CITY[d.city]||"go";
+
+const $ = s=>document.querySelector(s);
+const store = { get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}} };
+let done; try{ done = JSON.parse(store.get("trip-done")||"{}") }catch(e){ done = {} }
+
+function todayStr(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}` }
+const nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
+const dayDiff=(a,b)=>Math.round((new Date(a+"T12:00")-new Date(b+"T12:00"))/864e5);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDur=m=>m<60?`${m} 分鐘`:(m%60?`${Math.floor(m/60)} 小時 ${m%60} 分`:`${m/60} 小時`);
+
+
+function renderDays(sel){
+  const t=todayStr();
+  const seg=(col,span,cls,txt)=>`<span class="seg ${cls}" style="grid-column:${col}/span ${span}">${txt}</span>`;
+  $("#days").innerHTML =
+    seg(1,1,"c-go","飛")+seg(2,3,"c-bcn","巴塞隆納 3 晚")+seg(5,2,"c-mad","馬德里 2 晚")+seg(7,1,"c-go","回")+seg(8,1,"c-pack","出發前")+
+    DAYS.map(d=>`<button class="day c-${cityOf(d)}${d.date<t?' past':''}" role="tab" id="tab-${d.id}" aria-selected="${d.id===sel}" aria-controls="view" data-id="${d.id}" aria-label="${d.md} ${d.wd} ${d.city}">
+    <span class="n">${d.md.slice(3)}</span><span class="m"><span class="wd">${d.wd}</span><span class="ct">${d.city}</span></span>${d.date===t?'<span class="today">今天</span>':''}</button>`).join("")
+    + `<button class="day c-pack" role="tab" id="tab-pack" aria-selected="${sel==='pack'}" aria-controls="view" data-id="pack"><span class="n">行李</span><span class="m"><span class="wd">清單</span><span class="ct">${packCount()}</span></span></button>`;
+  const strip=$("#days");
+  strip.querySelectorAll(".day").forEach(b=>b.onclick=()=>select(b.dataset.id,true));
+  strip.onkeydown=e=>{ if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft") return; const bs=[...strip.querySelectorAll(".day")]; const i=bs.indexOf(document.activeElement); if(i<0) return; const nb=bs[(i+(e.key==="ArrowRight"?1:-1)+bs.length)%bs.length]; select(nb.dataset.id,true); $("#tab-"+nb.dataset.id).focus(); };
+  const cur=strip.querySelector('[aria-selected="true"]');
+  if(cur){ const l=cur.offsetLeft-strip.offsetLeft, r=l+cur.offsetWidth; if(l<strip.scrollLeft||r>strip.scrollLeft+strip.clientWidth) strip.scrollLeft=Math.max(0,l-40); }
+}
+
+function routeOf(day){
+  // ordered stops (consecutive duplicates removed) + unique numbering
+  const seq=[], nums={}; let n=0;
+  day.items.forEach(it=>{ if(!it.place || !it.t) return; if(seq[seq.length-1]!==it.place) seq.push(it.place); });
+  day.items.forEach(it=>{ if(it.place && !(it.place in nums)) nums[it.place]=++n; });
+  return {seq,nums};
+}
+
+function mapSVG(day,seq,nums){
+  const keys=Object.keys(nums);
+  if(keys.length<2) return '<div class="empty-map"><b>RDU → BOS → BCN</b>今天都在機場跟飛機上，沒有市區路線。</div>';
+  const W=440,H=340,pad=34, city=cityOf(day);
+  const kmLat=111.2, med=a=>{const s=a.slice().sort((x,y)=>x-y);return s[s.length>>1]};
+  const core=keys.filter(k=>P[k][2]).length?keys.filter(k=>P[k][2]):keys; // saved places, not airports, decide the center
+  const cLat=med(core.map(k=>P[k][0])), cLng=med(core.map(k=>P[k][1])), kx=Math.cos(cLat*Math.PI/180);
+  const dist=k=>Math.hypot((P[k][0]-cLat)*kmLat,(P[k][1]-cLng)*kmLat*kx);
+  // Airports and far stations would squash the city; draw them as edge markers instead
+  const far=k=>dist(k)>6;
+  const near=keys.filter(k=>!far(k));
+  const X=lng=>lng*kx, Y=lat=>-lat;
+  let minX=Math.min(...near.map(k=>X(P[k][1]))),maxX=Math.max(...near.map(k=>X(P[k][1]))),minY=Math.min(...near.map(k=>Y(P[k][0]))),maxY=Math.max(...near.map(k=>Y(P[k][0])));
+  const minSpan=.012; if(maxX-minX<minSpan){const c=(minX+maxX)/2;minX=c-minSpan/2;maxX=c+minSpan/2} if(maxY-minY<minSpan){const c=(minY+maxY)/2;minY=c-minSpan/2;maxY=c+minSpan/2}
+  const s=Math.min((W-2*pad)/(maxX-minX),(H-2*pad)/(maxY-minY));
+  const ox=(W-(maxX-minX)*s)/2, oy=(H-(maxY-minY)*s)/2;
+  const proj=(lat,lng)=>[ox+(X(lng)-minX)*s, oy+(Y(lat)-minY)*s];
+  const cx=W/2, cy=H/2, edge=16;
+  const xy=k=>{ const [x,y]=proj(P[k][0],P[k][1]); if(!far(k)) return [x,y];
+    const dx=x-cx, dy=y-cy, t=Math.min((W/2-edge)/Math.abs(dx||1e-9),(H/2-edge)/Math.abs(dy||1e-9)); return [cx+dx*t, cy+dy*t]; };
+  const kmPx=s/kmLat;
+  const bar=[.25,.5,1,2,5].find(b=>kmPx*b>=48)||5;
+  let bg="";
+  if(city==="bcn"){ // Eixample blocks: 133 m grid, rotated ~45°
+    let step=kmPx*.1335; while(step<9) step*=2;
+    let g=""; for(let v=-W;v<=W*2;v+=step){g+=`<line x1="${v.toFixed(1)}" y1="${-H}" x2="${v.toFixed(1)}" y2="${H*2}"/><line x1="${-W}" y1="${v.toFixed(1)}" x2="${W*2}" y2="${v.toFixed(1)}"/>`}
+    bg=`<g stroke="var(--map-grid)" stroke-width="1" transform="rotate(45 ${cx} ${cy})">${g}</g>`;
+  } else if(city==="mad"){ // rings around Kilómetro Cero at Puerta del Sol
+    const [kx0,ky0]=proj(40.41669,-3.70358); let g="";
+    for(let r=1;r<=12;r++) g+=`<circle cx="${kx0.toFixed(1)}" cy="${ky0.toFixed(1)}" r="${(kmPx*r*.5).toFixed(1)}" fill="none"/>`;
+    bg=`<g stroke="var(--map-grid)" stroke-width="1">${g}</g>`;
+    if(kx0>0&&kx0<W&&ky0>0&&ky0<H) bg+=`<g fill="var(--ink-3)" font-family="DM Sans,sans-serif" font-size="10"><path d="M${kx0.toFixed(1)} ${(ky0-5).toFixed(1)}l5 5l-5 5l-5 -5z" fill="var(--ink-3)"/><text x="${(kx0+9).toFixed(1)}" y="${(ky0+16).toFixed(1)}">Km 0</text></g>`;
+  } else {
+    let g=""; for(let i=1;i<6;i++){g+=`<line x1="${W*i/6}" y1="0" x2="${W*i/6}" y2="${H}"/><line x1="0" y1="${H*i/6}" x2="${W}" y2="${H*i/6}"/>`}
+    bg=`<g stroke="var(--map-grid)" stroke-width="1">${g}</g>`;
+  }
+  // nudge overlapping markers apart so every number stays readable
+  const pos={}; keys.forEach(k=>pos[k]=xy(k));
+  for(let it=0;it<40;it++) for(let i=0;i<keys.length;i++) for(let j=i+1;j<keys.length;j++){
+    const a=pos[keys[i]], b=pos[keys[j]]; let dx=b[0]-a[0], dy=b[1]-a[1], d=Math.hypot(dx,dy);
+    if(d<23){ if(d<.01){dx=1;dy=0;d=1} const m=(23-d)/2; a[0]-=dx/d*m; a[1]-=dy/d*m; b[0]+=dx/d*m; b[1]+=dy/d*m; }
+  }
+  keys.forEach(k=>{pos[k][0]=Math.min(W-14,Math.max(14,pos[k][0])); pos[k][1]=Math.min(H-(far(k)?44:14),Math.max(far(k)?46:14,pos[k][1]));});
+  const line=seq.map(k=>pos[k].map(v=>v.toFixed(1)).join(",")).join(" ");
+  const pts=keys.map(k=>({k,n:nums[k],opt:!seq.includes(k),far:far(k)}));
+  const kmTag={}, tagged=[];
+  pts.filter(p=>p.far).forEach(p=>{const [x,y]=pos[p.k]; if(tagged.some(([a,b])=>Math.hypot(a-x,b-y)<60)) return; tagged.push([x,y]); kmTag[p.k]=1;});
+  const dots=pts.sort((a,b)=>b.n-a.n).map(p=>{const [x,y]=pos[p.k]; const right=x>W*.58;
+    const name=p.far?`${p.k}，${dist(p.k).toFixed(0)} km`:p.k;
+    const lx=right?x-17:x+17, anchor=right?"end":"start";
+    return `<g class="pt${p.far?' far':''}" data-place="${esc(p.k)}" tabindex="0" role="button" aria-label="${p.n}. ${esc(p.k)}">
+      <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="10" fill="${p.opt?'var(--map-bg)':'var(--city)'}" stroke="var(--city)" stroke-width="2"${p.far?' stroke-dasharray="3 2"':''}/>
+      <text class="n" x="${x.toFixed(1)}" y="${(y+3.8).toFixed(1)}" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10.5" font-weight="600" fill="${p.opt?'var(--city)':'var(--on-ink)'}">${p.n}</text>
+      <text class="lbl" x="${lx.toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="${anchor}">${esc(name)}</text>
+      ${kmTag[p.k]?`<text x="${(x+(x>W/2?-16:16)).toFixed(1)}" y="${(y+(y>H/2?-16:26)).toFixed(1)}" text-anchor="${x>W/2?'end':'start'}" font-family="DM Sans,sans-serif" font-size="9.5" fill="var(--ink-3)">${dist(p.k).toFixed(0)} km</text>`:""}</g>`}).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(day.md)} 路線示意圖">
+    ${bg}
+    <polyline points="${line}" fill="none" stroke="var(--city)" stroke-width="2" stroke-linejoin="round" opacity=".28"/>
+    <polyline points="${line}" fill="none" stroke="var(--saffron)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="0.5 7"/>
+    ${dots}
+    <g transform="translate(14 ${H-14})" font-family="DM Sans,sans-serif" font-size="10" fill="var(--ink-3)"><line x1="0" y1="0" x2="${(kmPx*bar).toFixed(1)}" y2="0" stroke="var(--ink-3)" stroke-width="2"/><line x1="0" y1="-3" x2="0" y2="3" stroke="var(--ink-3)"/><line x1="${(kmPx*bar).toFixed(1)}" y1="-3" x2="${(kmPx*bar).toFixed(1)}" y2="3" stroke="var(--ink-3)"/><text x="0" y="-7">${bar>=1?bar+" km":bar*1000+" m"}</text></g>
+    <g transform="translate(${W-18} ${H-26})" font-family="DM Sans,sans-serif" font-size="10" fill="var(--ink-3)" text-anchor="middle"><path d="M0 -10l4 9h-8z" fill="var(--ink-3)"/><text y="11">N</text></g>
+  </svg>`;
+}
+
+function routeLinks(seq){
+  if(seq.length<2) return "";
+  // Google Maps /dir/ handles ~10 stops per link; split longer days, overlapping the joint stop
+  const chunks=[]; for(let i=0;i<seq.length-1;i+=9) chunks.push(seq.slice(i,i+10));
+  return chunks.map((c,i)=>{
+    const url="https://www.google.com/maps/dir/"+c.map(k=>`${P[k][0]},${P[k][1]}`).join("/");
+    const label=chunks.length===2?["前半天路線","後半天路線"][i]:chunks.length>2?`第 ${i+1} 段路線`:"Google 地圖開整天路線";
+    return `<a class="route-btn${i?' alt':''}" href="${url}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
+  }).join("");
+}
+let curNums={};
+
+const TAGS={fixed:"已訂好",book:"要先預約",opt:"有空再去",food:"吃"};
+// Shots for the short film that have no stop in the itinerary yet
+const MUST_EAT=["蕃茄麵包","辣醬馬鈴薯塊","炸丸子","炸小青椒","炸魷魚","馬鈴薯烘蛋","加泰隆尼亞奶油"];
+const NO_REC={"炸小青椒":"評論沒找到特別推的店。10/13 晚餐 El Glop Gaudí 菜單上有。","加泰隆尼亞奶油":"評論沒找到特別推的店。10/13 晚餐 El Glop Gaudí 菜單上有，但有人說普通。"};
+function mustEatHTML(){
+  return MUST_EAT.map(dn=>{
+    const hits=DAYS.flatMap(d=>d.items.flatMap((it,i)=>(it.eats||[]).filter(e=>e[0]===dn).map(e=>`<button type="button" data-day="${d.id}" data-i="${i}">${d.md} ${esc(it.title.replace(/^(午餐|晚餐|備案)：/,""))}</button>${e[2]?"（很多人推）":""}`)));
+    return `<li><span class="dn">${dn}</span><span class="wh">${hits.length?hits.join("、"):esc(NO_REC[dn]||"")}</span></li>`;
+  }).join("");
+}
+const UNPLACED_SHOTS=[{x:"佛朗明哥舞表演",note:"行程裡還沒排。巴塞隆納可以看 La Rambla 上的 Tablao Cordobés，或 Born 區 Carrer de Montcada 上的 Palau Dalmases（跟畢卡索美術館同一條街）。馬德里可以看旅館附近 Plaza de Santa Ana 的 Villa Rosa。都要先訂票，場次看官網。"}];
+function hoursOf(it,day){ const v=hoursOn(it.place,day.date); return v==null?null:{v,ok:openAt(v,it.t)}; }
+function hoursHTML(it,day){
+  const h=hoursOf(it,day);
+  if(!h) return NOH[it.place]?`<span class="hrs"><span class="na">${esc(NOH[it.place])}</span></span>`:"";
+  const {v,ok}=h;
+  const state = v==="x" ? `<span class="bad">當天公休</span>` : (!ok ? `<span class="bad">${esc(it.t)} 沒開</span>` : "");
+  const week=[10,11,12,13,14,15,16].map(d=>{const dt=`2026-10-${d}`; const w=WD[new Date(2026,9,d).getDay()]; const hv=hoursOn(it.place,dt);
+    return `<tr${dt===day.date?' class="cur"':''}><th>10/${d}（${w}）</th><td>${fmtHours(hv)}${d===12?' <span class="hol">國慶日</span>':''}</td></tr>`}).join("");
+  return `<span class="hrs">當天 <span class="v${v==='x'?' closed':''}">${fmtHours(v)}</span></span>${state}
+    <details class="week-d"><summary>整週</summary><table class="week">${week}</table></details>`;
+}
+
+function nowState(day){
+  if(day.date!==todayStr()) return {cur:null,next:null};
+  const m=nowMin(); let cur=null,next=null;
+  day.items.forEach((it,i)=>{ if(!it.t) return; const tm=hm(it.t); if(tm<=m) cur=i; else if(next===null) next=i; });
+  return {cur,next};
+}
+
+function select(id,save){
+  if(save){ store.set("trip-day",id); try{history.replaceState(null,"","#"+id)}catch(e){} }
+  if(id==="pack"){ renderDays("pack"); renderPack(); return; }
+  const day=DAYS.find(d=>d.id===id)||DAYS[0];
+  renderDays(day.id);
+  const {seq,nums}=routeOf(day); curNums=nums;
+  const c=cityOf(day);
+  const {cur,next}=nowState(day);
+  const items=day.items.map((it,i)=>{
+    const key=day.id+"-"+i, isDone=!!done[key];
+    const num=it.place?`<button class="num${seq.includes(it.place)?'':' opt'}" data-place="${esc(it.place)}" aria-label="在地圖上標出 ${esc(it.place)}">${nums[it.place]}</button>`:"";
+    const tag=(it.tag?`<span class="chip ${it.tag}">${TAGS[it.tag]}</span>`:"")+(it.shots?`<span class="chip shot">拍片</span>`:"");
+    const showName=it.place && !it.title.includes(it.place.replace(/ (市場|車站|建築群)$/,"").replace(/（.*$/,""));
+    const meta=it.place?`<div class="meta"><a class="maplink" href="${gUrl(it.place)}" target="_blank" rel="noopener">${showName?esc(it.place)+" 地圖":"Google 地圖"} ↗</a>${it.meet?`<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.meet)}" target="_blank" rel="noopener">集合點地圖 ↗</a>`:""}${hoursHTML(it,day)}</div>`:"";
+    return `<li class="it${isDone?' done':''}${it.tag==='fixed'?' fixed':''}${it.t?'':' flex'}${i===cur?' now':''}" data-i="${i}" data-place="${esc(it.place||'')}" style="--i:${i}">
+      <div class="t${it.t?'':' flex'}">${it.t||"隨時"}${it.end?`<small>– ${it.end}</small>`:""}</div>
+      <div class="rail"><input type="checkbox" class="node" id="chk-${key}" data-key="${key}" ${isDone?"checked":""} aria-label="完成：${esc(it.title)}"></div>
+      <div class="body">
+        <div class="h">${num}<h3>${esc(it.title)}</h3>${tag}${i===cur?'<span class="now-tag">現在</span>':''}</div>
+        ${it.desc?`<p>${esc(it.desc)}</p>`:""}
+        ${it.see?`<p class="see"><b>看點</b>${esc(it.see)}</p>`:""}
+        ${it.eats?`<p class="eats"><b>評論推薦</b>${it.eats.map(([d,n,st])=>`<span class="dish${st?' st':''}">${esc(d)}${n?`<small>（${esc(n)}）</small>`:""}</span>`).join("、")}</p>`:""}
+        ${it.shots?`<div class="shots">${it.shots.map(x=>`<span><b>鏡頭</b>${esc(x)}</span>`).join("")}</div>`:""}
+        ${meta}
+      </div></li>`;
+  }).join("");
+  // summary numbers for the head
+  const timed=day.items.filter(it=>it.t), first=timed[0].t, lastIt=timed[timed.length-1], last=lastIt.end||lastIt.t;
+  const nBook=day.items.filter(it=>it.tag==="book").length;
+  const dayShots=day.items.flatMap((it,i)=>(it.shots||[]).map(x=>({x,i,t:it.t,title:it.title}))), nShot=dayShots.length;
+  const nBad=day.items.filter(it=>{const h=it.place&&hoursOf(it,day); return h&&(!h.ok)}).length;
+  const stats=`<ul class="stats">
+    <li><b>${first}</b>到<b>${last}</b></li>
+    ${Object.keys(nums).length?`<li><b>${Object.keys(nums).length}</b>個地點</li>`:""}
+    ${nBook?`<li><b>${nBook}</b>個要先預約</li>`:""}
+    ${nShot?`<li><b>${nShot}</b>個鏡頭要拍</li>`:""}
+    ${Object.keys(nums).length?(nBad?`<li class="warn"><b>${nBad}</b>個營業時間對不上</li>`:`<li class="ok">營業時間都對得上</li>`):""}
+  </ul>`;
+  let nextup="";
+  if(next!==null){ const it=day.items[next], mins=hm(it.t)-nowMin();
+    nextup=`<div class="nextup"><span class="lbl">下一站</span><span class="t">${it.t}</span><span class="what">${esc(it.title)}</span><span class="eta">${fmtDur(mins)}後</span>${it.place?`<a href="${navUrl(it.place)}" target="_blank" rel="noopener">導航 ↗</a>`:""}</div>`; }
+  const legend=Object.keys(nums).map(k=>`<li><button class="num${seq.includes(k)?'':' opt'}" data-place="${esc(k)}" aria-label="在地圖上標出 ${esc(k)}">${nums[k]}</button><a href="${gUrl(k)}" target="_blank" rel="noopener" title="${esc(k)}">${esc(k)}</a></li>`).join("");
+  const nPlaces=Object.keys(nums).length;
+  $("#view").innerHTML=`<section class="day-view c-${c}" role="tabpanel" aria-labelledby="tab-${day.id}">
+    <div class="dhead">
+      <div class="dnum" aria-hidden="true">${day.md.slice(3)}<small>10 月</small></div>
+      <div>
+        <p class="dmeta"><span class="city">${day.city}</span><span>${day.md} ${day.wd}</span>${day.holiday?`<span class="hol-badge">${day.holiday}</span>`:""}</p>
+        <h2>${esc(day.title)}</h2><p class="sub">${esc(day.sub)}</p>${stats}
+      </div>
+    </div>
+    ${nextup}
+    <div class="grid">
+      <ol class="tl">${items}</ol>
+      <aside class="side">
+        <div class="panel p-map"><h4>當天路線${nPlaces?`<small>${seq.length} 站照順序連起來</small>`:""}</h4>
+          <div class="mapbox">${mapSVG(day,seq,nums)}</div>
+          ${nPlaces>1?`<p class="mapnote">${c==="bcn"?"底紋是擴建區 133 公尺的街廓方向。":c==="mad"?"底紋是以太陽門 Km 0 為中心、每 500 公尺一圈。":""}空心圈是有空再去的點，太遠的點（機場）貼在邊上。點數字會在行程裡標出那一站。</p>`:""}
+          ${seq.length>1?`<div class="route-btns">${routeLinks(seq)}</div>`:""}
+          ${nPlaces?`<details class="places"><summary>全部 ${nPlaces} 個地點</summary><ul class="legend-list">${legend}</ul></details>`:""}
+        </div>
+        ${nShot?`<div class="panel p-shots"><h4>今天要拍<small>點一下跳到那一站</small></h4><ul class="shot-list">${dayShots.map(d=>`<li><span class="w">${d.t||"隨時"}</span><span><button type="button" data-jump="${d.i}">${esc(d.x)}</button><small>${esc(d.title)}</small></span></li>`).join("")}</ul></div>`:""}
+        <div class="panel p-notes"><h4>注意</h4><ul class="notes">${day.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div>
+      </aside>
+    </div></section>`;
+  bind(day);
+}
+
+function highlight(place,scroll){
+  document.querySelectorAll(".num").forEach(b=>b.classList.toggle("on",b.dataset.place===place));
+  document.querySelectorAll(".pt").forEach(g=>{const on=g.dataset.place===place; g.classList.toggle("on",on); if(on) g.parentNode.appendChild(g);});
+  document.querySelectorAll(".it").forEach(li=>li.classList.toggle("hot",li.dataset.place===place));
+  if(scroll){ const li=document.querySelector(`.it[data-place="${CSS.escape(place)}"]`);
+    if(li) li.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}); }
+}
+function bind(){
+  const fine=matchMedia("(hover:hover)").matches;
+  document.querySelectorAll(".num").forEach(b=>b.onclick=()=>highlight(b.dataset.place,true));
+  document.querySelectorAll(".pt").forEach(g=>{g.onclick=()=>highlight(g.dataset.place,true);g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();highlight(g.dataset.place,true)}}});
+  if(fine) document.querySelectorAll(".it[data-place]").forEach(li=>{ if(li.dataset.place) li.onmouseenter=()=>highlight(li.dataset.place,false); });
+  document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{ const li=document.querySelector(`.it[data-i="${b.dataset.jump}"]`); if(!li) return; li.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}); li.classList.add("hot"); setTimeout(()=>li.classList.remove("hot"),1600); });
+  document.querySelectorAll(".it .node").forEach(c=>c.onchange=()=>{
+    if(c.checked) done[c.dataset.key]=1; else delete done[c.dataset.key];
+    store.set("trip-done",JSON.stringify(done));
+    c.closest(".it").classList.toggle("done",c.checked);
+  });
+}
+
+// Packing list. mine: from Justin's own list; maybe: was in parentheses (bring only if needed)
+const PACK=[
+ {sec:"證件跟錢",items:[
+  {n:"護照",note:"效期要超過回程日 6 個月"},
+  {n:"美國再入境文件",note:"綠卡、有效簽證、I-20 這類，回美國入境要用"},
+  {n:"信用卡 2 張以上",note:"挑免海外手續費的，分開放"},
+  {n:"少量歐元現金",note:"€100–200 就夠，大部分地方都能感應刷卡"},
+  {n:"所有票券截圖",note:"機票、10/14 火車票、聖家堂 QR code、各景點門票，存在手機相簿"},
+  {n:"住宿確認單",note:"Casa Pince、Hostal Sun Gate"},
+  {n:"旅遊保險資料"}
+ ]},
+ {sec:"衣服",items:[
+  {n:"衣服 4–5 套",note:"照我的公式，7 天 ÷ 2 + 1 = 4.5 套"},
+  {n:"內衣褲、襪子"},
+  {n:"薄外套",note:"馬德里早晚大概 12°C，Bunkers 山上風大"},
+  {n:"好走的鞋",note:"每天應該都會走 15,000 步以上"},
+  {n:"能遮肩膀的衣服",note:"10/13 進聖家堂要穿"},
+  {n:"睡衣"},
+  {n:"拖鞋",mine:1},
+  {n:"折疊傘或輕便雨衣"},
+  {n:"太陽眼鏡"},
+  {n:"衣架",mine:1},
+  {n:"衣夾",mine:1},
+  {n:"髒衣袋",mine:1}
+ ]},
+ {sec:"盥洗跟保養",items:[
+  {n:"牙刷、牙膏",note:"西班牙旅館通常不給"},
+  {n:"沐浴乳",mine:1},
+  {n:"洗髮精",mine:1},
+  {n:"洗面乳",mine:1},
+  {n:"卸妝膏",mine:1},
+  {n:"保養品"},
+  {n:"防曬乳"},
+  {n:"濕紙巾",mine:1},
+  {n:"面紙"},
+  {n:"隱形眼鏡、眼鏡",note:"有戴的話"},
+  {n:"吹風機",mine:1,maybe:1,note:"先問旅館有沒有。美國帶去的要注意電壓是 230V"},
+  {n:"毛巾",mine:1,maybe:1,note:"旅館通常有，Hostal 可以先問"},
+  {n:"100ml 以下的分裝瓶",note:"登機箱液體限制"}
+ ]},
+ {sec:"藥",items:[
+  {n:"個人處方藥",note:"放隨身行李"},
+  {n:"感冒藥、止痛退燒藥"},
+  {n:"腸胃藥"},
+  {n:"OK 繃"},
+  {n:"暈車藥",note:"會暈的話"}
+ ]},
+ {sec:"電子產品",items:[
+  {n:"歐規轉接頭（C／F 型）",note:"西班牙插座是圓頭兩孔，美國插頭插不進去，一定要帶"},
+  {n:"多孔 USB 充電器",note:"一個插座同時充手機、相機、行充"},
+  {n:"手機充電線"},
+  {n:"相機",mine:1},
+  {n:"相機電池、記憶卡、充電器"},
+  {n:"360 相機",mine:1},
+  {n:"360 相機的隱形自拍棒"},
+  {n:"行充",mine:1,note:"只能放隨身行李，不能託運"},
+  {n:"硬碟",mine:1},
+  {n:"Type-C 轉 HDMI",mine:1},
+  {n:"耳機"},
+  {n:"eSIM 或 SIM 卡，8–10GB",note:"經驗是玩 7 天用 10GB。這次在西班牙 5 天多，8–10GB 夠了"}
+ ]},
+ {sec:"飛機上",items:[
+  {n:"頸枕、眼罩、耳塞",note:"10/10 是紅眼班機"},
+  {n:"空水壺",note:"過完安檢再裝水"},
+  {n:"一套換洗衣服放隨身行李",note:"萬一託運行李晚到"}
+ ]},
+ {sec:"吃的跟日用品",items:[
+  {n:"泡麵",mine:1,note:"歐盟不能帶含肉的食品入境，挑素食口味或調味包沒肉的"},
+  {n:"零食",mine:1},
+  {n:"環保餐具",mine:1},
+  {n:"餐具",mine:1},
+  {n:"防扒手斜背包或腰包",note:"背在前面，La Rambla 跟地鐵特別需要"},
+  {n:"摺疊購物袋",note:"西班牙超市袋子要錢"},
+  {n:"幾個夾鏈袋",note:"裝液體、濕衣服、零碎小東西"},
+  {n:"行李箱鎖"}
+ ]},
+ {sec:"出門前",items:[
+  {n:"關冷氣",mine:1,maybe:1},
+  {n:"清冰箱",mine:1,maybe:1},
+  {n:"倒垃圾",mine:1,maybe:1},
+  {n:"關好門窗、水電瓦斯"},
+  {n:"植物澆水、暫停寄送"},
+  {n:"訂好所有限時段門票",note:"主教座堂、畢卡索、巴特略、米拉、桂爾公園、音樂宮、聖家堂、馬德里王宮都訂好了，只剩 Sant Pau"},
+  {n:"線上 check-in"},
+  {n:"下載 Google 地圖離線地圖",note:"巴塞隆納、馬德里"}
+ ]},
+ {sec:"回程",items:[
+  {n:"火腿、香腸這類肉製品不能帶回美國",note:"Museo del Jamón 在當地吃就好"},
+  {n:"退稅單在馬德里機場辦",note:"託運行李前先去 DIVA 機器掃"}
+ ]}
+];
+const TIPS=[
+ {t:"不要搭紅眼班機。真的要搭，記得旅館也是下午才能 check in。",apply:"BOS → BCN 就是紅眼班機，10/11 早上到，所以第一站是先去旅館寄放行李。"},
+ {t:"Air France 飛機餐好吃，JetBlue 座位空間大。",apply:"國內段是 JetBlue（B62084）。"},
+ {t:"飯店不要省錢，安全最重要。"},
+ {t:"衣服帶「總天數 ÷ 2 + 1」套。",apply:"7 天，帶 4–5 套。"},
+ {t:"實際玩 7 天，網路大概用 10GB。"},
+ {t:"如果從週一玩到週一，請假請旅行尾聲那個週一，因為旅行前期比較容易翹掉或參加會議。"},
+ {t:"要請最少的假，就週五晚上出發、週日晚上飛回來。"},
+ {t:"不要為了省小錢花大錢。"}
+];
+let packed; try{ packed=JSON.parse(store.get("trip-packed")||"{}") }catch(e){ packed={} }
+let hideDone=store.get("trip-pack-hide")==="1";
+const packTotal=()=>PACK.reduce((a,s)=>a+s.items.length,0);
+function packCount(){ return `${Object.keys(packed).length}/${packTotal()}`; }
+function renderPack(){
+  let si0=0;
+  const secs=PACK.map((s,si)=>{
+    const got=s.items.filter((_,ii)=>packed[`${si}-${ii}`]).length;
+    return `<section class="pk-sec" style="--i:${si0++}"><h3>${esc(s.sec)} <span class="pk-n${got===s.items.length?' full':''}">${got}/${s.items.length}</span></h3><ul class="pk-list">${s.items.map((it,ii)=>{const k=`${si}-${ii}`;return `<li class="pk-it${packed[k]?' done':''}">
+      <input type="checkbox" class="node" id="pk-${k}" data-k="${k}" ${packed[k]?"checked":""}>
+      <label for="pk-${k}"><span class="pk-name">${esc(it.n)}</span>${it.maybe?'<span class="pk-tag maybe">看情況</span>':''}${it.note?`<span class="pk-note">${esc(it.note)}</span>`:''}</label></li>`}).join("")}</ul></section>`}).join("");
+  const got=Object.keys(packed).length, tot=packTotal(), pct=got/tot, R=50, C=2*Math.PI*R;
+  $("#view").innerHTML=`<section class="day-view c-pack" role="tabpanel" aria-labelledby="tab-pack">
+    <div class="pk-head">
+      <div class="ring" role="progressbar" aria-label="打包進度" aria-valuemin="0" aria-valuemax="${tot}" aria-valuenow="${got}">
+        <svg viewBox="0 0 112 112"><circle cx="56" cy="56" r="${R}" fill="none" stroke="var(--line)" stroke-width="8"/><circle cx="56" cy="56" r="${R}" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" opacity="${got?1:0}" stroke-dasharray="${(C*pct).toFixed(1)} ${C.toFixed(1)}"/></svg>
+        <span class="pc">${got}<small>／${tot}</small></span>
+      </div>
+      <div>
+        <h2>行李清單</h2>
+        <p>10/10 出門前打包完。標 <span class="pk-tag maybe">看情況</span> 的是原本加括號的，到時候再決定要不要帶。</p>
+        <div class="row">
+          <div class="pk-filter" role="group" aria-label="顯示">
+            <button type="button" id="pk-all" aria-pressed="${!hideDone}">全部</button><button type="button" id="pk-left" aria-pressed="${hideDone}">只看還沒裝的</button>
+          </div>
+          <button class="pk-reset" id="pk-reset" type="button">全部取消勾選</button>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="pk-cols${hideDone?' hide-done':''}">${secs}</div>
+      <aside class="side"><div class="panel"><h4>短片鏡頭<small>點一下跳到那天</small></h4><ul class="shot-list">${DAYS.flatMap(d=>d.items.flatMap((it,i)=>(it.shots||[]).map(x=>`<li><span class="w">${d.md}</span><span><button type="button" data-day="${d.id}" data-i="${i}">${esc(x)}</button><small>${d.wd} ${it.t} ${esc(it.title)}</small></span></li>`))).join("")}${UNPLACED_SHOTS.map(u=>`<li><span class="w">還沒排</span><span>${esc(u.x)}<small>${esc(u.note)}</small></span></li>`).join("")}</ul></div><div class="panel"><h4>西班牙必吃<small>評論有推的店</small></h4><ul class="dish-list">${mustEatHTML()}</ul></div><div class="panel"><h4>我的旅行原則</h4><ul class="tips">${TIPS.map(x=>`<li><span class="q">${esc(x.t)}</span>${x.apply?`<span class="tip-apply"><b>這次</b> ${esc(x.apply)}</span>`:''}</li>`).join("")}</ul></div></aside>
+    </div></section>`;
+  document.querySelectorAll(".pk-it input").forEach(c=>c.onchange=()=>{
+    if(c.checked) packed[c.dataset.k]=1; else delete packed[c.dataset.k];
+    store.set("trip-packed",JSON.stringify(packed));
+    c.closest(".pk-it").classList.toggle("done",c.checked);
+    updatePackCounts();
+  });
+  document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{ select(b.dataset.day,true); const li=document.querySelector(`.it[data-i="${b.dataset.i}"]`); if(li){ li.scrollIntoView({block:"center"}); li.classList.add("hot"); setTimeout(()=>li.classList.remove("hot"),1600);} });
+  const setHide=v=>{hideDone=v;store.set("trip-pack-hide",v?"1":"0");$(".pk-cols").classList.toggle("hide-done",v);$("#pk-all").setAttribute("aria-pressed",!v);$("#pk-left").setAttribute("aria-pressed",v);};
+  $("#pk-all").onclick=()=>setHide(false); $("#pk-left").onclick=()=>setHide(true);
+  let armed=false; const rb=$("#pk-reset");
+  rb.onclick=()=>{ if(!armed){armed=true;rb.classList.add("armed");rb.textContent="再按一次確認";setTimeout(()=>{armed=false;if(rb.isConnected){rb.classList.remove("armed");rb.textContent="全部取消勾選"}},3000);return;}
+    packed={}; store.set("trip-packed","{}"); renderDays("pack"); renderPack(); };
+}
+function updatePackCounts(){
+  const got=Object.keys(packed).length, tot=packTotal(), C=2*Math.PI*50;
+  const ring=$(".ring"); ring.setAttribute("aria-valuenow",got);
+  const arc=ring.querySelectorAll("circle")[1]; arc.setAttribute("stroke-dasharray",`${(C*got/tot).toFixed(1)} ${C.toFixed(1)}`); arc.setAttribute("opacity",got?1:0);
+  ring.querySelector(".pc").innerHTML=`${got}<small>／${tot}</small>`;
+  document.querySelectorAll(".pk-sec").forEach((sec,si)=>{const n=PACK[si].items.length, g=PACK[si].items.filter((_,ii)=>packed[`${si}-${ii}`]).length; const el=sec.querySelector(".pk-n"); el.textContent=`${g}/${n}`; el.classList.toggle("full",g===n);});
+  const ct=document.querySelector("#tab-pack .ct"); if(ct) ct.textContent=packCount();
+}
+
+(function init(){
+  const h=(location.hash||"").slice(1), t=todayStr();
+  const byToday=DAYS.find(d=>d.date===t);
+  const saved=store.get("trip-day");
+  const valid=x=>x==="pack"||DAYS.some(d=>d.id===x);
+  const start = valid(h)?h : byToday?byToday.id : valid(saved)?saved : "d0";
+  select(start,false);
+  // keep the strip height in sync for sticky offsets, and show a hairline once it sticks
+  const shell=$("#strip-shell");
+  const sync=()=>document.documentElement.style.setProperty("--strip-h",shell.offsetHeight+"px");
+  sync(); addEventListener("resize",sync);
+  if("IntersectionObserver" in window){ const s=document.createElement("div"); shell.before(s); new IntersectionObserver(([e])=>shell.classList.toggle("stuck",!e.isIntersecting)).observe(s); }
+  setInterval(()=>{ const sel=document.querySelector('.day[aria-selected="true"]'); if(sel&&sel.dataset.id!=="pack"&&DAYS.find(x=>x.id===sel.dataset.id).date===todayStr()){ const y=scrollY; select(sel.dataset.id,false); scrollTo(0,y);} },60000);
+})();
+</script>
+</body>
+</html>
