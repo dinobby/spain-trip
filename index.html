@@ -331,7 +331,8 @@ const P = {"Casa Pince":[41.381173,2.175047,"9820200102320385984"],"Hostal Sun G
 "巴塞隆納機場 (BCN)":[41.2974,2.0833,null,"Barcelona El Prat Airport"],
 "Barcelona Sants 車站":[41.3792,2.1402,null,"Estació de Barcelona Sants"],
 "Madrid Puerta de Atocha 車站":[40.4066,-3.6907,null,"Estación de Madrid Puerta de Atocha"],
-"馬德里機場 (MAD)":[40.4936,-3.5668,null,"Aeropuerto Adolfo Suárez Madrid-Barajas"]
+"馬德里機場 (MAD)":[40.4936,-3.5668,null,"Aeropuerto Adolfo Suárez Madrid-Barajas"],
+"Tablao Flamenco 1911":[40.41437,-3.70063,null,"Tablao Flamenco 1911, Pl. de Sta. Ana, 15, Centro, 28012 Madrid, Spain"]
 };
 const gUrl = n => { const p=P[n]; return p[2] ? `https://maps.google.com/?cid=${p[2]}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[3]||n)}`; };
 const navUrl = n => `https://www.google.com/maps/dir/?api=1&destination=${P[n][0]},${P[n][1]}`;
@@ -391,7 +392,7 @@ const H={
  "海洋聖母聖殿":W("10-18","10-18","13-18","10-18","10-18")
 };
 // Places with no hours on Google Maps
-const NOH={"Casa Pince":"旅館","Hostal Sun Gate":"旅館","La Rambla":"戶外，隨時可去","Plaça Reial":"戶外，隨時可去","Carrer dels Sagristans":"戶外，隨時可去","主教橋":"戶外，隨時可去","Pg. de Colom":"戶外，隨時可去","主廣場":"戶外，隨時可去","小老鼠 Pérez 信箱":"戶外，隨時可去","桂爾公園入口（Carrer d'Olot, 4）":"照門票時段入場","加泰羅尼亞音樂宮":"Google 地圖沒寫，導覽時段看官網","水晶宮":"Google 地圖沒寫，換展期間可能不開","San Ginés Book Shop":"Google 地圖沒寫","巴塞隆納機場 (BCN)":"機場","馬德里機場 (MAD)":"機場","Barcelona Sants 車站":"車站","Madrid Puerta de Atocha 車站":"車站"};
+const NOH={"Casa Pince":"旅館","Hostal Sun Gate":"旅館","La Rambla":"戶外，隨時可去","Plaça Reial":"戶外，隨時可去","Carrer dels Sagristans":"戶外，隨時可去","主教橋":"戶外，隨時可去","Pg. de Colom":"戶外，隨時可去","主廣場":"戶外，隨時可去","小老鼠 Pérez 信箱":"戶外，隨時可去","桂爾公園入口（Carrer d'Olot, 4）":"照門票時段入場","加泰羅尼亞音樂宮":"Google 地圖沒寫，導覽時段看官網","水晶宮":"Google 地圖沒寫，換展期間可能不開","San Ginés Book Shop":"Google 地圖沒寫","巴塞隆納機場 (BCN)":"機場","馬德里機場 (MAD)":"機場","Barcelona Sants 車站":"車站","Madrid Puerta de Atocha 車站":"車站","Tablao Flamenco 1911":"看票上的場次"};
 const WD=["日","一","二","三","四","五","六"];
 const hm=s=>{const [h,m]=s.split(":").map(Number);return h*60+(m||0)};
 const pad=s=>{const [h,m]=s.split(":");return String(h).padStart(2,"0")+":"+(m||"00")};
@@ -499,7 +500,7 @@ const DAYS = [
  ],
  notes:["Barcelona Sants 上車，Madrid Puerta de Atocha 下車。進站要過安檢，大行李也要過 X 光。","Casa Hernanz 週三 13:30–16:30 午休，所以放完行李先去。","王宮遇到官方活動會臨時關，出發前看一下官網。"]},
 
-{id:"d5",date:"2026-10-15",md:"10/15",wd:"週四",city:"馬德里",title:"麗池公園、索菲亞王后藝術中心、Malasaña 逛小店",sub:"早上公園跟美術館。17:00 小店都開了，再去 Malasaña 和 Chueca 一帶。",
+{id:"d5",date:"2026-10-15",md:"10/15",wd:"週四",city:"馬德里",title:"麗池公園、索菲亞王后藝術中心、Malasaña、佛朗明哥舞",sub:"早上公園跟美術館，下午逛 Malasaña 的小店，18:00 看佛朗明哥舞。",
  items:[
   {t:"10:00",title:"麗池公園大湖划船",see:"大湖邊的阿方索十二世紀念碑，划船時就在正前方。",place:"麗池公園",desc:"划船時間 10:00–14:00、15:30–20:00。"},
   {t:"10:45",title:"水晶宮",see:"整棟鐵架玻璃屋蓋在小湖邊，裡面通常是當代藝術展。",place:"水晶宮",desc:"換展期間偶爾不開，Google 地圖也沒寫營業時間。"},
@@ -511,11 +512,12 @@ const DAYS = [
   {t:"17:00",title:"La Antigua",place:"La Antigua",tag:"opt"},
   {t:"17:20",title:"El Moderno",place:"El Moderno",tag:"opt"},
   {t:"17:35",title:"La Postalera",place:"La Postalera",tag:"opt"},
-  {t:"17:55",title:"Nest Boutique",place:"Nest Boutique",tag:"opt"},
-  {t:"18:20",title:"La Europea",place:"La Europea",tag:"opt",desc:"20:00 關。"},
-  {t:"18:40",title:"Casa Gonzalez & Gonzalez",place:"Casa Gonzalez & Gonzalez",tag:"opt"},
-  {t:"19:00",title:"SLOWLY Concept Store",place:"SLOWLY Concept Store",tag:"opt"},
-  {t:"19:20",title:"Ofelia Home & Decor",place:"Ofelia Home & Decor",tag:"opt",desc:"20:30 關。"},
+  {t:"18:00",title:"佛朗明哥舞表演",place:"Tablao Flamenco 1911",tag:"fixed",shots:["佛朗明哥舞表演"],see:"以前叫 Villa Rosa，1911 年開的老 tablao，外牆是整面彩繪磁磚。",desc:"18:00 場，在 Plaza de Santa Ana 15 的 Tablao Flamenco 1911。從 Malasaña 走過去 15–20 分鐘，17:40 前出發。離旅館很近，看完要回去放東西也方便。"},
+  {t:"",title:"Nest Boutique",place:"Nest Boutique",tag:"opt",desc:"看完表演時間夠再去，20:30 關。"},
+  {t:"",title:"La Europea",place:"La Europea",tag:"opt",desc:"看完表演時間夠再去，20:00 關。"},
+  {t:"",title:"Casa Gonzalez & Gonzalez",place:"Casa Gonzalez & Gonzalez",tag:"opt",desc:"看完表演時間夠再去，20:30 關。"},
+  {t:"",title:"SLOWLY Concept Store",place:"SLOWLY Concept Store",tag:"opt",desc:"看完表演時間夠再去，21:00 關。"},
+  {t:"",title:"Ofelia Home & Decor",place:"Ofelia Home & Decor",tag:"opt",desc:"看完表演時間夠再去，20:30 關。"},
   {t:"20:30",title:"最後一晚吃好一點，回旅館打包",place:"Hostal Sun Gate",tag:"food"}
  ],
  notes:["很多小店中午會午休（DOOC 15:00–16:30、La Europea 14:00–16:00、Casa Gonzalez 14:30–17:00、Nest 14:30–16:00），所以逛店排在下午。","塞哥維亞要花一整天（從 Chamartín 搭 AVANT 約 30 分鐘）。真的想去就拿今天整天去，其他都取消。","拉斯班塔斯鬥牛場在東邊比較遠，有內部導覽（週四 10:00–18:00）。很想看再去。","同一間店買到一定金額就能退稅，記得跟店家拿退稅單，明天在機場辦。"]},
@@ -655,7 +657,7 @@ function ncHTML(it){
   return `<small class="nc"><span>北卡</span>${a.t}${b?`<br>–${b.t}`:""}${a.prev?"<span>（前一天）</span>":""}</small>`;
 }
 const TAGS={fixed:"已訂好",book:"要先預約",opt:"有空再去",food:"吃"};
-// Shots for the short film that have no stop in the itinerary yet
+// Shots for the short film that have no stop in the itinerary yet ({x, note})
 const MUST_EAT=["蕃茄麵包","辣醬馬鈴薯塊","炸丸子","炸小青椒","炸魷魚","馬鈴薯烘蛋","加泰隆尼亞奶油"];
 const NO_REC={"炸小青椒":"評論沒找到特別推的店。10/13 晚餐 El Glop Gaudí 菜單上有。","加泰隆尼亞奶油":"評論沒找到特別推的店。10/13 晚餐 El Glop Gaudí 菜單上有，但有人說普通。"};
 function mustEatHTML(){
@@ -664,7 +666,7 @@ function mustEatHTML(){
     return `<li><span class="dn">${dn}</span><span class="wh">${hits.length?hits.join("、"):esc(NO_REC[dn]||"")}</span></li>`;
   }).join("");
 }
-const UNPLACED_SHOTS=[{x:"佛朗明哥舞表演",note:"行程裡還沒排。巴塞隆納可以看 La Rambla 上的 Tablao Cordobés，或 Born 區 Carrer de Montcada 上的 Palau Dalmases（跟畢卡索美術館同一條街）。馬德里可以看旅館附近 Plaza de Santa Ana 的 Villa Rosa。都要先訂票，場次看官網。"}];
+const UNPLACED_SHOTS=[];
 function hoursOf(it,day){ const v=hoursOn(it.place,day.date); return v==null?null:{v,ok:openAt(v,it.t)}; }
 function hoursHTML(it,day){
   const h=hoursOf(it,day);
