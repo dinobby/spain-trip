@@ -17,7 +17,7 @@
   --saffron:#F2A900; --saffron-ink:#8F5D00; --saffron-soft:#FFF2CC;
   --bcn:#167A8B; --bcn-soft:#DDF0F2; --mad:#A8253A; --mad-soft:#F7E1E4; --go:#6A7089; --go-soft:#ECEDF2;
   --paprika:#B3441E; --paprika-soft:#FBE7DE; --red:#C3322A; --red-soft:#FBE3E1; --green:#2A7A4B; --green-soft:#E0F1E6;
-  --map-bg:#EEF1F7; --map-grid:#D9DEEA; --on-ink:#FFFFFF;
+  --map-bg:#EEF1F7; --sel:#FFF9DA; --sel-line:#EBDB8F; --sel-ink:#131933; --map-grid:#D9DEEA; --on-ink:#FFFFFF;
   --shadow:0 1px 2px rgba(19,25,51,.05),0 8px 24px -12px rgba(19,25,51,.18);
   /* one font + weight per place on the page (tune them in the font lab) */
   --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
@@ -40,7 +40,7 @@
   --saffron:#FFC23D; --saffron-ink:#FFC23D; --saffron-soft:#352A0C;
   --bcn:#5CC6D6; --bcn-soft:#12303A; --mad:#FF8597; --mad-soft:#3A1720; --go:#9AA0BA; --go-soft:#1E2340;
   --paprika:#FF9A72; --paprika-soft:#3A1E14; --red:#FF8478; --red-soft:#3D1918; --green:#71D69C; --green-soft:#12301F;
-  --map-bg:#10142A; --map-grid:#1F2644; --on-ink:#0C0F1D;
+  --map-bg:#10142A; --sel:#FFF9DA; --sel-line:#FFF9DA; --sel-ink:#0C0F1D; --map-grid:#1F2644; --on-ink:#0C0F1D;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
   color-scheme:dark}}
 :root[data-theme="dark"]{
@@ -49,7 +49,7 @@
   --saffron:#FFC23D; --saffron-ink:#FFC23D; --saffron-soft:#352A0C;
   --bcn:#5CC6D6; --bcn-soft:#12303A; --mad:#FF8597; --mad-soft:#3A1720; --go:#9AA0BA; --go-soft:#1E2340;
   --paprika:#FF9A72; --paprika-soft:#3A1E14; --red:#FF8478; --red-soft:#3D1918; --green:#71D69C; --green-soft:#12301F;
-  --map-bg:#10142A; --map-grid:#1F2644; --on-ink:#0C0F1D;
+  --map-bg:#10142A; --sel:#FFF9DA; --sel-line:#FFF9DA; --sel-ink:#0C0F1D; --map-grid:#1F2644; --on-ink:#0C0F1D;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.6);
   color-scheme:dark}
 
@@ -70,7 +70,7 @@ button{font:inherit;color:inherit}
 /* hero */
 .hero{padding-bottom:22px}
 .hero h1{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 18px;line-height:1}
-.hero h1 .zh{font-family:var(--f-h1);font-weight:var(--w-h1);font-size:clamp(56px,11vw,112px)}
+.hero h1 .zh{font-family:var(--f-h1);font-weight:var(--w-h1);font-size:clamp(34px,11vw,112px);white-space:nowrap}
 .hero h1 .es{font-family:var(--f-es);font-weight:var(--w-es);font-size:clamp(22px,3.6vw,36px);color:var(--ink-2)}
 .hero h1 .es i{font-style:normal;color:var(--bcn)} .hero h1 .es b{font-weight:400;color:var(--mad)}
 
@@ -90,9 +90,10 @@ button{font:inherit;color:inherit}
 .day .m{display:grid;line-height:1.25;min-width:0}
 .day .wd{font-size:12px;color:var(--ink-2)}
 .day .ct{font-size:12px;font-weight:700;color:var(--city);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.day[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-ink);box-shadow:var(--shadow)}
+.day[aria-selected="true"]{background:var(--sel);border-color:var(--sel-line);color:var(--sel-ink);box-shadow:var(--shadow)}
 .day[aria-selected="true"] .wd{color:inherit;opacity:.75}
-.day[aria-selected="true"] .ct{color:var(--city)}
+.day[aria-selected="true"] .ct{color:inherit}
+.day[aria-selected="true"] .today{background:var(--sel-ink);color:var(--sel)}
 .day .today{position:absolute;top:9px;right:8px;font-size:10.5px;font-weight:700;line-height:1;padding:3px 5px;border-radius:5px;background:var(--saffron);color:#1A1200}
 .day.past:not([aria-selected="true"]) .n{color:var(--ink-3)}
 .day.c-pack .n{font-family:var(--f-h4);font-weight:var(--w-h4);font-size:22px}
@@ -144,10 +145,12 @@ button{font:inherit;color:inherit}
 
 /* timeline */
 .tl{list-style:none;margin:0;padding:0}
-.it{display:grid;grid-template-columns:52px 22px minmax(0,1fr);column-gap:12px;position:relative}
-@media (max-width:560px){.it{grid-template-columns:42px 20px minmax(0,1fr);column-gap:8px}.it .t{font-size:13px}.it .body{padding-inline:8px}}
+.it{display:grid;grid-template-columns:58px 22px minmax(0,1fr);column-gap:12px;position:relative}
+@media (max-width:560px){.it{grid-template-columns:48px 20px minmax(0,1fr);column-gap:8px}.it .t{font-size:13px}.it .body{padding-inline:8px}}
 .it .t{font-family:var(--f-time);font-weight:var(--w-time);font-size:14px;line-height:1.3;font-variant-numeric:tabular-nums;color:var(--ink);text-align:right;padding-top:15px}
 .it .t small{display:block;font-size:12px;color:var(--ink-3)}
+.it .t .nc{margin-top:5px;font-size:11.5px;line-height:1.35;color:var(--ink-3);white-space:nowrap}
+.it .t .nc span{display:block;font-family:var(--f-body);font-size:10.5px}
 .it .t.flex{font-family:var(--f-body);font-size:12px;color:var(--ink-3)}
 .rail{position:relative;display:flex;justify-content:center}
 .rail::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--line)}
@@ -308,7 +311,7 @@ button{font:inherit;color:inherit}
 <div class="wrap">
   <header class="hero">
     <div>
-      <h1><span class="zh">西班牙之旅</span><span class="es"><i>Barcelona</i> y <b>Madrid</b></span></h1>
+      <h1><span class="zh">2026 西班牙之旅</span></h1>
     </div>
   </header>
 
@@ -319,10 +322,6 @@ button{font:inherit;color:inherit}
 <div class="wrap wrap-main">
   <main id="view"></main>
 
-  <footer class="foot">
-    <span>營業時間是 10/9 從 Google 地圖抓的，出發前再看一次。</span>
-    <span>打勾的紀錄只存在這台裝置的瀏覽器。</span>
-  </footer>
 </div>
 
 <script>
@@ -411,10 +410,10 @@ function openAt(v,t){
 const DAYS = [
 {id:"d0",date:"2026-10-10",md:"10/10",wd:"週六",city:"出發",title:"Raleigh → Boston → 巴塞隆納",sub:"整天都在路上。晚上那班跨大西洋的紅眼班機，能睡就睡。",
  items:[
-  {t:"08:50",title:"抵達 RDU 機場",desc:"國內線提早 2 小時到。護照放隨身包。"},
-  {t:"10:55",end:"12:50",title:"RDU → BOS（B62084）",tag:"fixed",desc:"飛 1 小時 55 分。"},
-  {t:"12:50",end:"20:38",title:"波士頓轉機",desc:"要等 7 小時 45 分。先查國際線在哪個航廈。如果跟國內段不是同一張票，要領行李重新託運。上飛機前好好吃一頓。"},
-  {t:"20:38",title:"BOS → 巴塞隆納",tag:"fixed",desc:"紅眼班機，隔天 09:50 到。一上飛機就把手錶調成西班牙時間（比美東快 6 小時）。"}
+  {tz:"us",t:"08:50",title:"抵達 RDU 機場",desc:"國內線提早 2 小時到。護照放隨身包。"},
+  {tz:"us",t:"10:55",end:"12:50",title:"RDU → BOS（B62084）",tag:"fixed",desc:"飛 1 小時 55 分。"},
+  {tz:"us",t:"12:50",end:"20:38",title:"波士頓轉機",desc:"要等 7 小時 45 分。先查國際線在哪個航廈。如果跟國內段不是同一張票，要領行李重新託運。上飛機前好好吃一頓。"},
+  {tz:"us",t:"20:38",title:"BOS → 巴塞隆納",tag:"fixed",desc:"紅眼班機，隔天 09:50 到。一上飛機就把手錶調成西班牙時間（比美東快 6 小時）。"}
  ],
  notes:["已經訂好的票有主教座堂 10/11 15:30、畢卡索 10/11 16:30、巴特略 10/12 08:45、米拉 10/12 11:00、桂爾公園 10/12 15:30、音樂宮 10/13 10:30、聖家堂 10/13 17:45、馬德里王宮 10/14 14:30。Sant Pau 還沒訂。","歐盟入境現在會拍照、按指紋（EES），排隊可能比較久。ETIAS 預計 2026 年底上路，出發前再查一次要不要辦。","Google 地圖先下載巴塞隆納跟馬德里的離線地圖。","帶一點歐元現金就好，大部分地方都能感應刷卡。"]},
 
@@ -525,9 +524,9 @@ const DAYS = [
   {t:"08:30",title:"早餐、退房",place:"Hostal Sun Gate",desc:"想再吃一次吉拿棒，San Ginés 就在旁邊。"},
   {t:"09:45",title:"搭計程車去機場",desc:"市區到機場是固定價，約 €33，30 分鐘。地鐵也可以，但要轉車。"},
   {t:"10:30",title:"抵達馬德里機場",place:"馬德里機場 (MAD)",desc:"先確認航廈。有退稅單的話，託運前先去 DIVA 機器掃。"},
-  {t:"13:30",end:"16:07",title:"MAD → BOS",tag:"fixed"},
-  {t:"16:07",end:"20:35",title:"波士頓入境轉機",desc:"過海關、領行李、重新託運、再過一次安檢。4.5 小時夠用。"},
-  {t:"20:35",end:"22:42",title:"BOS → RDU，回家",tag:"fixed"}
+  {t:"13:30",end:"16:07",endTz:"us",title:"MAD → BOS",tag:"fixed",desc:"13:30 是馬德里起飛時間，16:07 是波士頓當地時間降落。"},
+  {tz:"us",t:"16:07",end:"20:35",title:"波士頓入境轉機",desc:"過海關、領行李、重新託運、再過一次安檢。4.5 小時夠用。"},
+  {tz:"us",t:"20:35",end:"22:42",title:"BOS → RDU，回家",tag:"fixed"}
  ],
  notes:["飛美國要提早 3 小時到機場，會多一道安全問答。","退稅要在離開歐盟的最後一個機場辦，這趟就是馬德里。","火腿、香腸這類肉製品不能帶進美國。"]}
 ];
@@ -645,6 +644,16 @@ function routeLinks(seq){
 }
 let curNums={};
 
+// North Carolina time. Spain (CEST, UTC+2) is 6 hours ahead of NC (EDT, UTC-4) for the whole trip.
+// Items with tz:"us" are already in NC time (RDU, Boston); endTz marks a flight that lands in the US.
+const toNC=(t,tz)=>{ if(tz==="us") return {t,prev:false}; let m=hm(t)-360, prev=m<0; m=(m+1440)%1440; return {t:`${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`,prev}; };
+function ncHTML(it){
+  if(!it.t) return "";
+  const endTz=it.endTz||it.tz;
+  if(it.tz==="us"&&(!it.end||endTz==="us")) return `<small class="nc">北卡時間</small>`;
+  const a=toNC(it.t,it.tz), b=it.end?toNC(it.end,endTz):null;
+  return `<small class="nc"><span>北卡</span>${a.t}${b?`<br>–${b.t}`:""}${a.prev?"<span>（前一天）</span>":""}</small>`;
+}
 const TAGS={fixed:"已訂好",book:"要先預約",opt:"有空再去",food:"吃"};
 // Shots for the short film that have no stop in the itinerary yet
 const MUST_EAT=["蕃茄麵包","辣醬馬鈴薯塊","炸丸子","炸小青椒","炸魷魚","馬鈴薯烘蛋","加泰隆尼亞奶油"];
@@ -690,7 +699,7 @@ function select(id,save){
     const showName=it.place && !it.title.includes(it.place.replace(/ (市場|車站|建築群)$/,"").replace(/（.*$/,""));
     const meta=it.place?`<div class="meta"><a class="maplink" href="${gUrl(it.place)}" target="_blank" rel="noopener">${showName?esc(it.place)+" 地圖":"Google 地圖"} ↗</a>${it.meet?`<a class="maplink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.meet)}" target="_blank" rel="noopener">集合點地圖 ↗</a>`:""}${hoursHTML(it,day)}</div>`:"";
     return `<li class="it${isDone?' done':''}${it.tag==='fixed'?' fixed':''}${it.t?'':' flex'}${i===cur?' now':''}" data-i="${i}" data-place="${esc(it.place||'')}" style="--i:${i}">
-      <div class="t${it.t?'':' flex'}">${it.t||"隨時"}${it.end?`<small>– ${it.end}</small>`:""}</div>
+      <div class="t${it.t?'':' flex'}">${it.t||"隨時"}${it.end?`<small>– ${it.end}</small>`:""}${ncHTML(it)}</div>
       <div class="rail"><input type="checkbox" class="node" id="chk-${key}" data-key="${key}" ${isDone?"checked":""} aria-label="完成：${esc(it.title)}"></div>
       <div class="body">
         <div class="h">${num}<h3>${esc(it.title)}</h3>${tag}${i===cur?'<span class="now-tag">現在</span>':''}</div>
@@ -706,13 +715,6 @@ function select(id,save){
   const nBook=day.items.filter(it=>it.tag==="book").length;
   const dayShots=day.items.flatMap((it,i)=>(it.shots||[]).map(x=>({x,i,t:it.t,title:it.title}))), nShot=dayShots.length;
   const nBad=day.items.filter(it=>{const h=it.place&&hoursOf(it,day); return h&&(!h.ok)}).length;
-  const stats=`<ul class="stats">
-    <li><b>${first}</b>到<b>${last}</b></li>
-    ${Object.keys(nums).length?`<li><b>${Object.keys(nums).length}</b>個地點</li>`:""}
-    ${nBook?`<li><b>${nBook}</b>個要先預約</li>`:""}
-    ${nShot?`<li><b>${nShot}</b>個鏡頭要拍</li>`:""}
-    ${Object.keys(nums).length?(nBad?`<li class="warn"><b>${nBad}</b>個營業時間對不上</li>`:`<li class="ok">營業時間都對得上</li>`):""}
-  </ul>`;
   let nextup="";
   if(next!==null){ const it=day.items[next], mins=hm(it.t)-nowMin();
     nextup=`<div class="nextup"><span class="lbl">下一站</span><span class="t">${it.t}</span><span class="what">${esc(it.title)}</span><span class="eta">${fmtDur(mins)}後</span>${it.place?`<a href="${navUrl(it.place)}" target="_blank" rel="noopener">導航 ↗</a>`:""}</div>`; }
@@ -723,7 +725,7 @@ function select(id,save){
       <div class="dnum" aria-hidden="true">${day.md.slice(3)}<small>10 月</small></div>
       <div>
         <p class="dmeta"><span class="city">${day.city}</span><span>${day.md} ${day.wd}</span>${day.holiday?`<span class="hol-badge">${day.holiday}</span>`:""}</p>
-        <h2>${esc(day.title)}</h2><p class="sub">${esc(day.sub)}</p>${stats}
+        <h2>${esc(day.title)}</h2><p class="sub">${esc(day.sub)}</p>
       </div>
     </div>
     ${nextup}
@@ -763,7 +765,7 @@ function bind(){
   });
 }
 
-// Packing list. mine: from Justin's own list; maybe: was in parentheses (bring only if needed)
+// Packing list. x: removed from the list (kept so saved check keys keep their index). mine: from Justin's own list; maybe: was in parentheses (bring only if needed)
 const PACK=[
  {sec:"證件跟錢",items:[
   {n:"護照",note:"效期要超過回程日 6 個月"},
@@ -778,7 +780,7 @@ const PACK=[
   {n:"衣服 4–5 套",note:"照我的公式，7 天 ÷ 2 + 1 = 4.5 套"},
   {n:"內衣褲、襪子"},
   {n:"薄外套",note:"馬德里早晚大概 12°C，Bunkers 山上風大"},
-  {n:"好走的鞋",note:"每天應該都會走 15,000 步以上"},
+  {x:1,n:"好走的鞋",note:"每天應該都會走 15,000 步以上"},
   {n:"能遮肩膀的衣服",note:"10/13 進聖家堂要穿"},
   {n:"睡衣"},
   {n:"拖鞋",mine:1},
@@ -816,8 +818,8 @@ const PACK=[
   {n:"手機充電線"},
   {n:"相機",mine:1},
   {n:"相機電池、記憶卡、充電器"},
-  {n:"360 相機",mine:1},
-  {n:"360 相機的隱形自拍棒"},
+  {x:1,n:"360 相機",mine:1},
+  {x:1,n:"360 相機的隱形自拍棒"},
   {n:"行充",mine:1,note:"只能放隨身行李，不能託運"},
   {n:"硬碟",mine:1},
   {n:"Type-C 轉 HDMI",mine:1},
@@ -832,12 +834,12 @@ const PACK=[
  {sec:"吃的跟日用品",items:[
   {n:"泡麵",mine:1,note:"歐盟不能帶含肉的食品入境，挑素食口味或調味包沒肉的"},
   {n:"零食",mine:1},
-  {n:"環保餐具",mine:1},
-  {n:"餐具",mine:1},
+  {x:1,n:"環保餐具",mine:1},
+  {x:1,n:"餐具",mine:1},
   {n:"防扒手斜背包或腰包",note:"背在前面，La Rambla 跟地鐵特別需要"},
   {n:"摺疊購物袋",note:"西班牙超市袋子要錢"},
   {n:"幾個夾鏈袋",note:"裝液體、濕衣服、零碎小東西"},
-  {n:"行李箱鎖"}
+  {x:1,n:"行李箱鎖"}
  ]},
  {sec:"出門前",items:[
   {n:"關冷氣",mine:1,maybe:1},
@@ -866,16 +868,19 @@ const TIPS=[
 ];
 let packed; try{ packed=JSON.parse(store.get("trip-packed")||"{}") }catch(e){ packed={} }
 let hideDone=store.get("trip-pack-hide")==="1";
-const packTotal=()=>PACK.reduce((a,s)=>a+s.items.length,0);
-function packCount(){ return `${Object.keys(packed).length}/${packTotal()}`; }
+const live=(si,ii)=>PACK[si]&&PACK[si].items[ii]&&!PACK[si].items[ii].x;
+const packTotal=()=>PACK.reduce((a,s)=>a+s.items.filter(it=>!it.x).length,0);
+const packGot=()=>Object.keys(packed).filter(k=>{const [a,b]=k.split("-").map(Number);return live(a,b)}).length;
+const secCount=si=>{const its=PACK[si].items; return {n:its.filter(it=>!it.x).length,g:its.filter((it,ii)=>!it.x&&packed[`${si}-${ii}`]).length}};
+function packCount(){ return `${packGot()}/${packTotal()}`; }
 function renderPack(){
   let si0=0;
   const secs=PACK.map((s,si)=>{
-    const got=s.items.filter((_,ii)=>packed[`${si}-${ii}`]).length;
-    return `<section class="pk-sec" style="--i:${si0++}"><h3>${esc(s.sec)} <span class="pk-n${got===s.items.length?' full':''}">${got}/${s.items.length}</span></h3><ul class="pk-list">${s.items.map((it,ii)=>{const k=`${si}-${ii}`;return `<li class="pk-it${packed[k]?' done':''}">
+    const {n:secN,g:got}=secCount(si);
+    return `<section class="pk-sec" style="--i:${si0++}"><h3>${esc(s.sec)} <span class="pk-n${got===secN?' full':''}">${got}/${secN}</span></h3><ul class="pk-list">${s.items.map((it,ii)=>{if(it.x) return "";const k=`${si}-${ii}`;return `<li class="pk-it${packed[k]?' done':''}">
       <input type="checkbox" class="node" id="pk-${k}" data-k="${k}" ${packed[k]?"checked":""}>
       <label for="pk-${k}"><span class="pk-name">${esc(it.n)}</span>${it.maybe?'<span class="pk-tag maybe">看情況</span>':''}${it.note?`<span class="pk-note">${esc(it.note)}</span>`:''}</label></li>`}).join("")}</ul></section>`}).join("");
-  const got=Object.keys(packed).length, tot=packTotal(), pct=got/tot, R=50, C=2*Math.PI*R;
+  const got=packGot(), tot=packTotal(), pct=got/tot, R=50, C=2*Math.PI*R;
   $("#view").innerHTML=`<section class="day-view c-pack" role="tabpanel" aria-labelledby="tab-pack">
     <div class="pk-head">
       <div class="ring" role="progressbar" aria-label="打包進度" aria-valuemin="0" aria-valuemax="${tot}" aria-valuenow="${got}">
@@ -884,7 +889,6 @@ function renderPack(){
       </div>
       <div>
         <h2>行李清單</h2>
-        <p>10/10 出門前打包完。標 <span class="pk-tag maybe">看情況</span> 的是原本加括號的，到時候再決定要不要帶。</p>
         <div class="row">
           <div class="pk-filter" role="group" aria-label="顯示">
             <button type="button" id="pk-all" aria-pressed="${!hideDone}">全部</button><button type="button" id="pk-left" aria-pressed="${hideDone}">只看還沒裝的</button>
@@ -911,11 +915,11 @@ function renderPack(){
     packed={}; store.set("trip-packed","{}"); renderDays("pack"); renderPack(); };
 }
 function updatePackCounts(){
-  const got=Object.keys(packed).length, tot=packTotal(), C=2*Math.PI*50;
+  const got=packGot(), tot=packTotal(), C=2*Math.PI*50;
   const ring=$(".ring"); ring.setAttribute("aria-valuenow",got);
   const arc=ring.querySelectorAll("circle")[1]; arc.setAttribute("stroke-dasharray",`${(C*got/tot).toFixed(1)} ${C.toFixed(1)}`); arc.setAttribute("opacity",got?1:0);
   ring.querySelector(".pc").innerHTML=`${got}<small>／${tot}</small>`;
-  document.querySelectorAll(".pk-sec").forEach((sec,si)=>{const n=PACK[si].items.length, g=PACK[si].items.filter((_,ii)=>packed[`${si}-${ii}`]).length; const el=sec.querySelector(".pk-n"); el.textContent=`${g}/${n}`; el.classList.toggle("full",g===n);});
+  document.querySelectorAll(".pk-sec").forEach((sec,si)=>{const {n,g}=secCount(si); const el=sec.querySelector(".pk-n"); el.textContent=`${g}/${n}`; el.classList.toggle("full",g===n);});
   const ct=document.querySelector("#tab-pack .ct"); if(ct) ct.textContent=packCount();
 }
 
